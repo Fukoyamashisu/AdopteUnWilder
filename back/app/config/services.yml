@@ -33,3 +33,16 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    claviska\SimpleImage:
+
+        # add more services, or override services that need manual wiring
+        # AppBundle\Service\ExampleService:
+        #     arguments:
+        #         $someArgument: 'some_value'
+
+    AppBundle\Service\Uploader:
+        arguments:
+            $projectDirectory: '%project_directory%'
+            $uploadPhotoDirectory: '%upload_photo_directory%'
+            $webDirectory: '%web_directory%'

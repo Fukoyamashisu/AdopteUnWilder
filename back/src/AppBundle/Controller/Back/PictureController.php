@@ -7,16 +7,17 @@
  * PHP version 7
  */
 
-namespace AppBundle\Controller\Admin;
+namespace AppBundle\Controller\Back;
 
 
+use AppBundle\Entity\Picture;
+use AppBundle\Entity\Project;
 use AppBundle\Form\PictureType;
 use AppBundle\Service\Uploader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Filesystem\Filesystem;
@@ -25,117 +26,118 @@ use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Class ProjectController
- * @Route("admin")
+ * @Route("back/project")
  */
 class PictureController extends Controller
 {
     /**
      *
-     * @Route("/production/{id}/photo/add", name="add_photo", requirements={"id"="\d+"})
+     * @Route("/{id}/picture/add", name="add_picture", requirements={"id"="\d+"})
      * @Method({"GET","POST"})
      */
-    public function addPhoto(Production $production, Request $request, Uploader $uploader)
+    public function addPicture(Project $project, Request $request, Uploader $uploader)
     {
-        $photo = new Photo();
-        $uploadPhotoForm = $this->createForm(PictureType::class, $photo);
-        $uploadPhotoForm->handleRequest($request);
-        if ($uploadPhotoForm->isSubmitted() && $uploadPhotoForm->isValid()) {
-            /** @var UploadedFile $uploadedPhoto */
-            $uploadPhotoDirectory = $this->container->getParameter('upload_photo_directory');
-            $uploadedPhoto = $photo->getPathFile();
-                if ($uploadedPhoto->isValid()) {
-                    $photoTitle = $uploadedPhoto->getClientOriginalName();
+        $picture = new Picture();
+        $uploadPictureForm = $this->createForm(PictureType::class, $picture);
+        $uploadPictureForm->handleRequest($request);
+        if ($uploadPictureForm->isSubmitted() && $uploadPictureForm->isValid()) {
+            /** @var UploadedFile $uploadedPicture */
+            $uploadPictureDirectory = $this->container->getParameter('upload_photo_directory');
+            $uploadedPicture = $picture->getPathFile();
+                if ($uploadedPicture->isValid()) {
+                    $pictureTitle = $uploadedPicture->getClientOriginalName();
                     // Check if the file is already uploaded
-                    $alreadyUploaded = $this->getDoctrine()->getManager()->getRepository(Photo::class)->findBy([
-                        'title' => $photoTitle,
+                    $alreadyUploaded = $this->getDoctrine()->getManager()->getRepository(Picture::class)->findBy([
+                        'pictureTitle' => $pictureTitle,
                     ]);
                     if ($alreadyUploaded) {
-                        $this->addFlash('error', 'La photo ' . $photoTitle . ' apparait déjà dans la réalisation');
+                        $this->addFlash('error', 'La picture ' . $pictureTitle . ' apparait déjà dans le projet');
                     } else {
-                        $photo->setTitle($photoTitle);
-                        $photo->setPath(
-                            $uploadPhotoDirectory
+                        $picture->setPictureTitle($pictureTitle);
+                        $picture->setPictureUrl(
+                            $uploadPictureDirectory
                             . '/'
-                            . $uploader->uploadPhoto($uploadedPhoto)
+                            . $uploader->uploadPhoto($uploadedPicture)
                         );
-                        $photo->setProduction($production);
+                        $picture->setProject($project);
+
                         $em = $this->getDoctrine()->getManager();
-                        $em->persist($photo);
+                        $em->persist($picture);
                         $em->flush();
                     }
                 } else {
-                    $this->addFlash('error', $uploadedPhoto->getErrorMessage());
+                    $this->addFlash('error', $uploadedPicture->getErrorMessage());
                 }
 
-                return $this->redirectToRoute('production_list', [
-                    'id' => $production->getId(),
+                return $this->redirectToRoute('project_list', [
+                    'id' => $project->getId(),
                 ]);
             }
         
         
-        return $this->render('/Back/admin/photo_add.html.twig', ['upload_photo_form' => $uploadPhotoForm->createView(),]);
+        return $this->render('profil/picture_add.html.twig', ['upload_picture_form' => $uploadPictureForm->createView(),]);
     }
 
     /**
      *
-     * @Route("/production/{id}/photo/{id_photo}", name="edit_photo", requirements={"id"="\d+"})
-     * @ParamConverter("photo", options={"mapping": {"id_photo": "id"}})
+     * @Route("/{id}/picture/{id_picture}", name="edit_picture", requirements={"id"="\d+"})
+     * @ParamConverter("picture", options={"mapping": {"id_picture": "id"}})
      * @Method({"GET","POST"})
      */
-    public function editPhoto(Production $production, Photo $photo, Request $request, Uploader $uploader)
+    public function editPicture(Project $project, Picture $picture, Request $request, Uploader $uploader)
     {
-        $photoPath = $photo->getPath();
-        $isMain = $photo->isMain();
-        $editForm = $this->createForm(PictureType::class, $photo, ['edit' => true, 'is_main' => $isMain]);
+        $picturePath = $picture->getPictureUrl();
+        $isMain = $picture->getIsMain();
+        $editForm = $this->createForm(PictureType::class, $picture, ['is_main' => $isMain]);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-            /** @var UploadedFile $uploadedPhoto */
-            $uploadPhotoDirectory = $this->container->getParameter('upload_photo_directory');
-            $uploadedPhoto = $photo->getPathFile();
-            if ($uploadedPhoto) {
-                if ($uploadedPhoto->isValid()) {
-                    $photoTitle = $uploadedPhoto->getClientOriginalName();
-                    $photo->setTitle($photoTitle);
-                    $photo->setPath(
-                        $uploadPhotoDirectory
+            /** @var UploadedFile $uploadedPicture */
+            $uploadPictureDirectory = $this->container->getParameter('upload_photo_directory');
+            $uploadedPicture = $picture->getPathFile();
+            if ($uploadedPicture) {
+                if ($uploadedPicture->isValid()) {
+                    $pictureTitle = $uploadedPicture->getClientOriginalName();
+                    $picture->setPictureTitle($pictureTitle);
+                    $picture->setPictureUrl(
+                        $uploadPictureDirectory
                         . '/'
-                        . $uploader->uploadPhoto($uploadedPhoto)
+                        . $uploader->uploadPhoto($uploadedPicture)
                     );
 
                     $fileSystem = new Filesystem();
                     $project_directory = $this->container->getParameter('project_directory');
                     $web_directory = $this->container->getParameter('web_directory');
-                    $fileSystem->remove($project_directory.$web_directory.$photoPath);
+                    $fileSystem->remove($project_directory.$web_directory.$picturePath);
 
                 } else {
-                    $this->addFlash('error', $uploadedPhoto->getErrorMessage());
+                    $this->addFlash('error', $uploadedPicture->getErrorMessage());
                 }
             } else {
-                $photo->setPath($photoPath);
+                $picture->setPictureUrl($picturePath);
             }
-            if ($photo->isMain()) {
-                $photoAlreadyIsMain = $this->getDoctrine()->getManager()->getRepository(Photo::class)->findOneBy([
+            if ($picture->getIsMain()) {
+                $pictureAlreadyIsMain = $this->getDoctrine()->getManager()->getRepository(Picture::class)->findOneBy([
                     'isMain' => true,
-                    'production' => $production,
+                    'project' => $project,
                 ]);
-                if ($photoAlreadyIsMain && $photoAlreadyIsMain != $photo) {
+                if ($pictureAlreadyIsMain && $pictureAlreadyIsMain != $picture) {
 
-                    $photoAlreadyIsMain->setIsMain(false);
+                    $pictureAlreadyIsMain->setIsMain(false);
                 }
             }
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('production_list', [
-                'id' => $production->getId(),
+            return $this->redirectToRoute('project_list', [
+                'id' => $project->getId(),
             ]);
         }
 
-        return $this->render('/Back/admin/photo_edit.html.twig', [
+        return $this->render('profil/picture_edit.html.twig', [
             'edit_form' => $editForm->createView(),
-            'photo' => $photo,
+            'picture' => $picture,
            ]);
     }
 

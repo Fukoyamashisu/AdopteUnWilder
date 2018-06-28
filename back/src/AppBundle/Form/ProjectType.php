@@ -19,13 +19,13 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, [
-                'label' => 'Titre de la réalisation',
+            ->add('projectTitle', TextType::class, [
+                'label' => 'Titre du projet',
                 'constraints' => [
-                    new NotBlank(['message' => 'Saisir un nom de réalisation'])]])
+                    new NotBlank(['message' => 'Saisir un nom de projet'])]])
 
-            ->add('mainDescription', TextareaType::class, [
-                'label' => 'Descriptif principal de la réalisation',
+            ->add('projectDescription', TextareaType::class, [
+                'label' => 'Descriptif principal du projet',
                  'required' => false]);
 
     }

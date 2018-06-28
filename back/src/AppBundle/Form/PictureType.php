@@ -9,8 +9,6 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use AppBundle\Entity\Photo;
-
 
 class PictureType extends AbstractType
 {
@@ -21,11 +19,10 @@ class PictureType extends AbstractType
     {
         $builder
             ->add('pathFile', FileType::class, ['label' => '', 'required' => false])
-            ->add('description', TextareaType::class, [
+            ->add('pictureDescription', TextareaType::class, [
                 'label' => 'Description de la photo',
                 'required' => false]);
 
-        if ($options['edit']) {
             if(!$options['is_main']) {
                 $builder
                     ->add('isMain', ChoiceType::class, [
@@ -36,7 +33,7 @@ class PictureType extends AbstractType
                         'multiple' => false,
                         'label' => 'Photo principale:']);
             }
-        }
+
     }
 
 
@@ -47,7 +44,7 @@ class PictureType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Picture::class,
-            'edit' => false,
+
             'is_main'=> false,
         ]);
     }

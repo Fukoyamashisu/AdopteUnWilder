@@ -7,23 +7,22 @@
  * PHP version 7
  */
 
-namespace AppBundle\Controller\Admin;
+namespace AppBundle\Controller\Back;
 
 
-use AppBundle\Entity\Production;
+use AppBundle\Entity\Project;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\FormTypeInterface;
-use AppBundle\Entity\Photo;
+use AppBundle\Entity\Picture;
 use AppBundle\Form\ProjectType;
 use Symfony\Component\Filesystem\Filesystem;
 
 
 /**
  * Class ProjectController
- * @Route("admin")
+ * @Route("back/project")
  */
 class ProjectController extends Controller
 {
@@ -31,25 +30,25 @@ class ProjectController extends Controller
     /**
      * Display admin space show production list
      *
-     * @Route("/production", name="production_list")
+     * @Route("/", name="project_list")
      * @Method("GET")
      */
-    public function productionList()
+    public function projectList()
     {
         $em = $this->getDoctrine()->getManager();
-        $productions = $em->getRepository(Production::class)->findAll();
+        $projects = $em->getRepository(Project::class)->findAll();
 
         $deleteForms = [];
-        foreach ($productions as $production) {
-            $photosProduction = $production->getPhotos();
+        foreach ($projects as $project) {
+            $picturesProject = $project->getPictures();
 
-            foreach ($photosProduction as $photo) {
-                $deleteForms[$photo->getId()] = $this->createDeleteForm($photo)->createView();
+            foreach ($picturesProject as $picture) {
+                $deleteForms[$picture->getId()] = $this->createDeleteForm($picture)->createView();
             }
         }
 
-        return $this->render('/Back/admin/productions_list.html.twig', [
-            'productions' => $productions,
+        return $this->render('profil/project_list.html.twig', [
+            'projects' => $projects,
             'deleteForms' => $deleteForms,
         ]);
     }
@@ -57,23 +56,23 @@ class ProjectController extends Controller
     /**
      * Display admin space show productions
      *
-     * @Route("/productions/{id}/edit", name="productions_edit")
+     * @Route("/{id}/edit", name="project_edit")
      * @Method({"GET","POST"})
      */
-    public function productionEdit(Request $request, Production $production)
+    public function projectEdit(Request $request, Project $project)
     {
 
-        $editForm = $this->createForm(ProjectType::class, $production);
+        $editForm = $this->createForm(ProjectType::class, $project);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('production_list');
+            return $this->redirectToRoute('project_list');
         }
 
-        return $this->render('Back/admin/production_edit.html.twig', [
-            'production' => $production,
+        return $this->render('profil/project_edit.html.twig', [
+            'project' => $project,
             'edit_form' => $editForm->createView(),
         ]);
     }
@@ -81,37 +80,37 @@ class ProjectController extends Controller
     /**
      * Display admin space delete image
      *
-     * @Route("/photo/{id}/delete", name="photo_delete", requirements={"id"="\d+"})
+     * @Route("/picture/{id}/delete", name="picture_delete", requirements={"id"="\d+"})
      * @Method("DELETE")
      */
-    public function photoDelete(Request $request, Photo $photo)
+    public function pictureDelete(Request $request, Picture $picture)
     {
-        $form = $this->createDeleteForm($photo);
+        $form = $this->createDeleteForm($picture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($photo);
+            $em->remove($picture);
             $fileSystem = new Filesystem();
             $project_directory = $this->container->getParameter('project_directory');
             $web_directory = $this->container->getParameter('web_directory');
-            $fileSystem->remove($project_directory.$web_directory.$photo->getPath());
+            $fileSystem->remove($project_directory.$web_directory.$picture->getPictureUrl());
             $em->flush();
         }
-        return $this->redirectToRoute('production_list', ['id'=> $photo->getProduction()->getId()]);
+        return $this->redirectToRoute('project_list', ['id'=> $picture->getProject()->getId()]);
     }
 
     /**
      * Creates a form to delete an image.
      *
-     * @param Photo $photo The photo entity
+     * @param Picture $picture The photo entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Photo $photo)
+    private function createDeleteForm(Picture $picture)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('photo_delete', ['id' => $photo->getId()]))
+            ->setAction($this->generateUrl('picture_delete', ['id' => $picture->getId()]))
             ->setMethod('DELETE')
             ->getForm()
             ;

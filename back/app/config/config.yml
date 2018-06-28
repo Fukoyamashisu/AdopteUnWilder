@@ -8,6 +8,9 @@ imports:
 parameters:
     locale: en
     domain: wildportfolio.com
+    project_directory: '%kernel.project_dir%'
+    web_directory: '/web'
+    upload_photo_directory: '/assets/images/uploaded'
 
 framework:
     #esi: ~
@@ -66,3 +69,5 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+
