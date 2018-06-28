@@ -19,7 +19,7 @@ class UserController extends Controller
 {
 
     /**
-    * @Route("/{", name="user_index", requirements={"id"="\d+"})
+    * @Route("/{id}", name="user_index", requirements={"id"="\d+"})
     * @Method({"GET","POST"})
     */
 

@@ -8,7 +8,7 @@ imports:
 parameters:
     locale: en
     domain: adopteMartin.com
-
+    domaina: adopteMartin.com
 
 framework:
     #esi: ~
