@@ -131,7 +131,7 @@ class Profil
      */
     private $recommendations;
 
-    private function __construct()
+    public function __construct()
     {
         $this->skills = new ArrayCollection();
         $this->recommendations = new ArrayCollection();
