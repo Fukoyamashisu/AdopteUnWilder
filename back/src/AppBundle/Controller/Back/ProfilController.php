@@ -3,6 +3,7 @@
 namespace AppBundle\Controller\Back;
 
 use AppBundle\Entity\Profil;
+use AppBundle\Service\ImageManipulator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,12 +24,12 @@ class ProfilController extends Controller
     /**
      * @Route("/user-edit", name="back.user.edit")
      */
-    public function editAction(Request $request)
+    public function editAction(Request $request, ImageManipulator $imageManipulator)
     {
         $em = $this->getDoctrine()->getRepository(Profil::class);
         $user = $em->find( 1);
 
-        //$currentPicture = $user->getProfilPicture();
+        $currentPicture = $user->getProfilPicture();
 
         $editForm = $this->createForm('AppBundle\Form\ProfilType', $user);
         $editForm->handleRequest($request);
@@ -36,17 +37,17 @@ class ProfilController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
             if ($editForm['profilPicture']->getdata()) {
-              /*  $pictureProfil = $user->getProfilPicture();
+                $pictureProfil = $user->getProfilPicture();
 
-                //$fileNamePicture = md5(uniqid()).'.'.$pictureProfil->guessExtension();
+                $fileNamePicture = uniqid().'.'.$pictureProfil->guessExtension();
 
-               // $imageManipulator->handleUploadedProfilPicture($pictureProfil,$fileNamePicture);
+                $imageManipulator->handleUploadedProfilPicture($pictureProfil,$fileNamePicture);
 
-                //$this->getUser()->setPicture('uploaded_files/picture_profil/' . $fileNamePicture);
+                $user->setProfilPicture('upload_photo_profil_directory/' . $fileNamePicture);
 
                 if($currentPicture) {
                     unlink($currentPicture);
-                }*/
+                }
             }
 
             $em = $this->getDoctrine()->getManager();

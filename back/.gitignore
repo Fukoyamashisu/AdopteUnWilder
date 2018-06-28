@@ -17,4 +17,7 @@
 /web/bundles/
 /web/assets/images/*
 !/web/assets/images/.gitkeep
+!/web/assets/images/uploaded/profilPicture.gitkeep
+
+
 

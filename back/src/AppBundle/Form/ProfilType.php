@@ -3,6 +3,8 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,14 +21,22 @@ class ProfilType extends AbstractType
             ->add('adress')
             ->add('phoneNumber')
             ->add('availability')
-            ->add('profilPicture')
-            ->add('coverPicture')
+            ->add('profilPicture', FileType::class, array(
+                'data_class' => null,
+                'required' => false,
+                'label' => 'Photo de profil'))
+            ->add('coverPicture', FileType::class, array(
+                'data_class' => null,
+                'required' => false,
+                'label' => 'Photo'))
             ->add('wildPromo')
             ->add('workingArea')
             ->add('profilTitle')
             ->add('profilDescription')
-            ->add('cvLink')
-            ->add('user');
+            ->add('cvLink', FileType::class, array(
+                'data_class' => null,
+                'required' => false,
+                'label' => 'Photo'));
     }
 
     /**

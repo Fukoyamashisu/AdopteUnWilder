@@ -1,8 +1,7 @@
 <?php
-namespace AppBundle\ImageManipulator;
+namespace AppBundle\Service;
 
 
-use AppBundle\Entity\User;
 use claviska\SimpleImage;
 
 class ImageManipulator
@@ -22,7 +21,6 @@ class ImageManipulator
 
     /**
      * Upload and resize of profil picture
-     * @param User $user
      */
     public function handleUploadedProfilPicture($picture, $fileNamePicture)
     {

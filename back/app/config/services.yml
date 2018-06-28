@@ -36,6 +36,9 @@ services:
 
     claviska\SimpleImage:
 
+    AppBundle\Service\ImageManipulator:
+        $uploadPath: '%kernel.root_dir%/../web/assets/images/uploaded/profilPicture/'
+
         # add more services, or override services that need manual wiring
         # AppBundle\Service\ExampleService:
         #     arguments:
