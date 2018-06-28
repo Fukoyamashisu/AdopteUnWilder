@@ -11,9 +11,7 @@ class ContenairV extends Component {
     render() {
         return (
      
-            <SideMenu>
-                <h1 style={{ color: "blue" }}>hello</h1>
-            </SideMenu>
+            <SideMenu {...this.props} />
         );
     }
 }

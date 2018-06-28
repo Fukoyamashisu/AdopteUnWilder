@@ -4,10 +4,10 @@ import ContenairH from './components/ContenairH';
 import ContenairV from './components/ContenairV';
 
 
-const Routes = (props) => {
+const Routes = (rest) => {
     return <div>
-        <Route exact path="/" component={ContenairH}/>
-        <Route path="/profile" component={ContenairV} />
+        <Route exact path="/" render={props => <ContenairH {...props} {...rest}/>}/>
+        <Route path="/profile" render={props => <ContenairV {...props} {...rest}/>} />
     </div>
 }
 

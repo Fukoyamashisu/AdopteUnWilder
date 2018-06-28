@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {SideMenu} from '../faac/MenuSide'
+import {SideMenu} from '../faac/MenuSide';
 
 
 class ContenairH  extends Component {
@@ -9,9 +9,7 @@ class ContenairH  extends Component {
     }
     render() {
         return (
-            <SideMenu>
-                <h1 style={{color:"white"}}>hello</h1>
-            </SideMenu>
+            <SideMenu {...this.props}/>
             
         );
     }

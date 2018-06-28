@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Routes/>
+        <Routes {...this.props}/>
       </div>
     );
   }
