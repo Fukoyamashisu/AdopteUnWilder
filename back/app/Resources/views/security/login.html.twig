@@ -8,7 +8,7 @@
                 <h2 class="text-center mb-5">Identifiez-vous</h2>
                 <div class="row">
                     <div class="col-md-8 offset-md-2 col-12">
-                        {#{% if error %}
+                        {% if error %}
                             <span class="invalid-feedback d-block mb-4">
                                 <span class="d-block">
                                     <span class="initialism form-error-icon badge badge-danger">Erreur</span>
@@ -16,7 +16,7 @@
                                     <span class="form-error-message">Mot de passe ou Email invalide !</span>
                                 </span>
                             </span>
-                        {% endif %}#}
+                        {% endif %}
                         <form action="{{ path('login') }}" method="post">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
