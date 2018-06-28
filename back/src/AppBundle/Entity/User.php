@@ -2,16 +2,17 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
-{
+class User implements UserInterface, \Serializable{
     /**
      * @var int
      *
@@ -157,5 +158,63 @@ class User
         return $this->isActive;
     }
 
-}
+    public function getRoles()
+    {
+        return [];
+    }
+
+
+    /**
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+        ));
+
+    }
+
+    /**
+     * @return void
+     * @since 5.1.0
+     * @see \Serializable::serialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->email,
+            $this->password,
+            ) = unserialize($serialized, ['allowed_classes' => false]);
+
+    }
+
+    public function eraseCredentials()
+    {
+
+    }
+
+    public function __construct()
+    {
+        $this->isActive = true;
+    }
+};
+
 
