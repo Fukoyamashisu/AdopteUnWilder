@@ -8,6 +8,7 @@ api:
 back:
     resource: "@AppBundle/Controller/Back"
     type: annotation
-    host: "back.{domain}"
+    host:     "back.{domain}"
     defaults:
         domain: '%domain%'
+
