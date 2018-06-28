@@ -1,0 +1,16 @@
+
+
+{% block content %}
+    <div class="container bg-white" id="container-edit-project">
+        <div class="row text-center">
+            <div class="col-5 mt-5 mx-auto">
+                {{ form_start(edit_form) }}
+                {{ form_row (edit_form.projectTitle) }}
+                {{ form_row (edit_form.projectDescription) }}
+
+                <button type="submit" class="btn btn-primary border-color-blue background-color-blue"/><i class="fas fa-pencil-alt mr-2"></i>Mettre à jour</button>
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
