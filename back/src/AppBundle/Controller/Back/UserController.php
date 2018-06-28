@@ -19,11 +19,12 @@ class UserController extends Controller
 {
 
     /**
-    * @Route("/{id}", name="user_index", requirements={"id"="\d+"})
+    * @Route("/{", name="user_index", requirements={"id"="\d+"})
     * @Method({"GET","POST"})
     */
 
-    public function user(Request $request) {
-        return $this->render('/Back/user/index.html.twig');
+    public function user(Request $request)
+    {
+        return $this->render('user/index.html.twig');
     }
 }

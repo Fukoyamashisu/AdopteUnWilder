@@ -180,6 +180,7 @@ class User implements UserInterface, \Serializable{
         return $this->email;
     }
 
+    /** @see \Serializable::serialize() */
     public function serialize()
     {
         return serialize(array(
@@ -193,6 +194,7 @@ class User implements UserInterface, \Serializable{
     /**
      * @return void
      * @since 5.1.0
+     * @see \Serializable::serialize()
      */
     public function unserialize($serialized)
     {
@@ -213,7 +215,6 @@ class User implements UserInterface, \Serializable{
     {
         $this->isActive = true;
     }
-
 };
 
 
