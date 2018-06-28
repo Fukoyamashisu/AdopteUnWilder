@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+
 
 {% block content %}
 
@@ -8,7 +8,6 @@
     </div>
 
     {% for project in projects %}
-        {{ dump(project.mainPicture) }}
     <table class="table bg-grey table-sm table-responsive-lg mx-2 text-center">
         <thead>
             <tr>
@@ -29,11 +28,11 @@
                          alt="picture-{{ project.mainPicture.pictureTitle }}"/>
                 </td>
                 <td class="align-middle text-left w-40">
-                    <p class="p-2">{{ project.pictureDescription }}</p>
+                    <p class="p-2">{{ project.projectDescription }}</p>
                 </td>
                 <td class="align-middle w-20">
                     <a class="btn btn-primary text-white background-color-blue border-color-blue"
-                       href="{{ path('projects_edit', {'id': project.id }) }}"><span class="fas fa-pencil-alt fa-fw mr-2"></span>Modifier le projet</a>
+                       href="{{ path('project_edit', {'id': project.id }) }}"><span class="fas fa-pencil-alt fa-fw mr-2"></span>Modifier le projet</a>
                 </td>
             </tr>
         </tbody>
@@ -54,7 +53,7 @@
             {% for picture in project.pictures %}
                 <tr>
                     <td class="align-middle">{{ picture.pictureTitle }}</td>
-                    <td class="align-middle"><img class="picture-thumbnails" src="{{ picture.pictureUrl }}" alt="picture-{{ picture.title }}"/></td>
+                    <td class="align-middle"><img class="picture-thumbnails" src="{{ picture.pictureUrl }}" alt="picture-{{ picture.pictureTitle }}"/></td>
                     <td class="align-middle">{% if picture.isMain %}<i class="fas fa-check-circle fa-2x"></i>{% endif %}</td>
                     <td class="align-middle">{{ picture.pictureDescription }}</td>
                     <td class="align-middle"><a class="btn btn-primary text-white background-color-blue border-color-blue" href="{{ path('edit_picture', {'id_picture': picture.id,'id': project.id}) }}"><span class="fas fa-pencil-alt fa-fw m-1"></span></a>

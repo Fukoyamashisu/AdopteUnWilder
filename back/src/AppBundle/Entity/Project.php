@@ -211,7 +211,7 @@ class Project
     public function getMainPicture()
     {
         foreach ($this->pictures as $picture) {
-            if ($picture->isMain()) {
+            if ($picture->getIsMain()) {
                 $mainPicture = $picture;
                 return $mainPicture;
             }
