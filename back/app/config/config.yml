@@ -7,12 +7,13 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    domain: wildportfolio.com
     project_directory: '%kernel.project_dir%'
     web_directory: '/web'
     upload_photo_directory: '/assets/images/uploaded'
     upload_photo_profil_directory: '/assets/images/uploaded/profilPicture'
     upload_photo_cover_directory: '/assets/images/uploaded/coverPicture'
+    domain: adopteflavien.com
+    domaina: adopteflavien.com
 
 framework:
     #esi: ~
