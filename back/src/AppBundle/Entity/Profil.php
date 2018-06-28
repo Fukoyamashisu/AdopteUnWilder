@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -129,6 +130,14 @@ class Profil
      * @ORM\OneToMany(targetEntity="Recommendation", mappedBy="profil")
      */
     private $recommendations;
+
+    private function __construct()
+    {
+        $this->skills = new ArrayCollection();
+        $this->recommendations = new ArrayCollection();
+        $this->projects = new ArrayCollection();
+        $this->experiences = new ArrayCollection();
+    }
 
     /**
      * Get id

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -58,6 +59,11 @@ class Project
      * @ORM\OneToMany(targetEntity="Picture", mappedBy="project")
      */
     private $pictures;
+
+    private function __construct()
+    {
+        $this->pictures = new ArrayCollection();
+    }
 
 
     /**

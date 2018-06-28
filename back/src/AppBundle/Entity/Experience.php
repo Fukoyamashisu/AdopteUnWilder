@@ -54,7 +54,6 @@ class Experience
      */
     private $profil;
 
-
     /**
      * Get id
      *
