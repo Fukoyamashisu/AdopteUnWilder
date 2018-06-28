@@ -120,27 +120,27 @@ class Picture
     }
 
     /**
-     * Set pictureDecription
+     * Set pictureDescription
      *
-     * @param string $pictureDecription
+     * @param string $pictureDescription
      *
      * @return Picture
      */
-    public function setPictureDecription($pictureDecription)
+    public function setPictureDescription($pictureDescription)
     {
-        $this->pictureDecription = $pictureDecription;
+        $this->pictureDescription = $pictureDescription;
 
         return $this;
     }
 
     /**
-     * Get pictureDecription
+     * Get pictureDescription
      *
      * @return string
      */
-    public function getPictureDecription()
+    public function getPictureDescription()
     {
-        return $this->pictureDecription;
+        return $this->pictureDescription;
     }
 
     /**
