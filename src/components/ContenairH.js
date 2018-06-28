@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { SideMenu } from "../faac/SideMenu";
 import { Container, Row, Col } from "reactstrap";
+import cover from "../assets/img/fond_home.jpg";
 
 class ContenairH extends Component {
   constructor(props) {
@@ -10,11 +11,11 @@ class ContenairH extends Component {
   render() {
     return (
       <Container fluid>
-        <Row style={{ marginTop: "20px" }}>
-          <Col xs="3">
+        <Row style={{ height: "100vh" }}>
+          <Col xs="12" lg="3">
             <SideMenu {...this.props} />
           </Col>
-          <Col xs="3">
+          <Col xs="12" lg="9" style={{ backgroundImage: {} }}>
             <p>contenus</p>
           </Col>
         </Row>
