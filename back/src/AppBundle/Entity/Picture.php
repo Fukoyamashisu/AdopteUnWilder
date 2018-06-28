@@ -38,9 +38,9 @@ class Picture
     /**
      * @var string
      *
-     * @ORM\Column(name="pictureDecription", type="text", nullable=true)
+     * @ORM\Column(name="pictureDescription", type="text", nullable=true)
      */
-    private $pictureDecription;
+    private $pictureDescription;
 
     /**
      * @var bool
