@@ -9,3 +9,6 @@ const theme = {
     black:"#252526",
     grey:"#fcfcfc"
 }
+
+
+export default theme;
