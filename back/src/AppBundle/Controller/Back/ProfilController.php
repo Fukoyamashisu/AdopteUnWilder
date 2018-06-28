@@ -29,36 +29,62 @@ class ProfilController extends Controller
         $em = $this->getDoctrine()->getRepository(Profil::class);
         $user = $em->find( 1);
 
-        $currentPicture = $user->getProfilPicture();
+        $currentProfilPicture = $user->getProfilPicture();
+        $currentCoverPicture = $user->getCoverPicture();
 
         $editForm = $this->createForm('AppBundle\Form\ProfilType', $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-            if ($editForm['profilPicture']->getdata()) {
-                $pictureProfil = $user->getProfilPicture();
+            if ($editForm['profilPicture']->getdata() === null ) {
+                $user->setProfilPicture($currentProfilPicture);
+            }
 
-                $fileNamePicture = uniqid().'.'.$pictureProfil->guessExtension();
+            if ($editForm['profilPicture']->getdata() ){
 
-                $imageManipulator->handleUploadedProfilPicture($pictureProfil,$fileNamePicture);
+            $pictureProfil = $user->getProfilPicture();
 
-                $user->setProfilPicture('upload_photo_profil_directory/' . $fileNamePicture);
+            $fileNamePicture = uniqid() . '.' . $pictureProfil->guessExtension();
 
-                if($currentPicture) {
-                    unlink($currentPicture);
+            $imageManipulator->handleUploadedProfilPicture($pictureProfil, $fileNamePicture);
+
+            $user->setProfilPicture('assets/images/uploaded/profilPicture/' . $fileNamePicture);
+
+            if ($currentProfilPicture ) {
+                unlink($currentProfilPicture);
                 }
             }
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+            if ($editForm['coverPicture']->getdata() === null ) {
+                $user->setProfilPicture($currentCoverPicture);
+            }
 
-            return $this->redirectToRoute('back.user.index');
-        }
+            if ($editForm['coverPicture']->getdata()) {
+
+            $pictureCover = $user->getCoverPicture();
+            $fileNameCover = uniqid() . '.' . $pictureCover->guessExtension();
+            $imageManipulator->handleUploadedCoverPicture($pictureCover, $fileNameCover);
+            $user->setCoverPicture('assets/images/uploaded/coverPicture/' . $fileNameCover);
+
+                if($currentCoverPicture) {
+                    unlink($currentCoverPicture);
+                }
+            }
+
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+
+        return $this->redirectToRoute('back.user.index');
+    }
 
         return $this->render('profil\edit.html.twig', array(
             'edit_form' => $editForm->createView(),
         ));
+
     }
+
 }

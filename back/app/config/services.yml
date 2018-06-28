@@ -38,6 +38,7 @@ services:
 
     AppBundle\Service\ImageManipulator:
         $uploadPath: '%kernel.root_dir%/../web/assets/images/uploaded/profilPicture/'
+        $uploadPathCover: '%kernel.root_dir%/../web/assets/images/uploaded/coverPicture/'
 
         # add more services, or override services that need manual wiring
         # AppBundle\Service\ExampleService:

@@ -28,7 +28,7 @@ class ProfilType extends AbstractType
             ->add('coverPicture', FileType::class, array(
                 'data_class' => null,
                 'required' => false,
-                'label' => 'Photo'))
+                'label' => 'CoverPhoto'))
             ->add('wildPromo')
             ->add('workingArea')
             ->add('profilTitle')
@@ -37,6 +37,7 @@ class ProfilType extends AbstractType
                 'data_class' => null,
                 'required' => false,
                 'label' => 'Photo'));
+
     }
 
     /**
