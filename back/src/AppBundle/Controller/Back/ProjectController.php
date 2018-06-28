@@ -9,7 +9,6 @@
 
 namespace AppBundle\Controller\Back;
 
-
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;

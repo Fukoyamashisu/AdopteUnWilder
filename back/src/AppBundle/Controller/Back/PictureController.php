@@ -9,7 +9,6 @@
 
 namespace AppBundle\Controller\Back;
 
-
 use AppBundle\Entity\Picture;
 use AppBundle\Entity\Project;
 use AppBundle\Form\PictureType;
@@ -21,7 +20,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Filesystem\Filesystem;
-
 
 
 /**
@@ -60,7 +58,7 @@ class PictureController extends Controller
                             . $uploader->uploadPhoto($uploadedPicture)
                         );
                         $picture->setProject($project);
-                        
+
                         if ($picture->getIsMain()) {
                             $pictureAlreadyIsMain = $this->getDoctrine()->getManager()->getRepository(Picture::class)->findOneBy([
                                 'isMain' => true,
