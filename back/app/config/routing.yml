@@ -1,5 +1,5 @@
 api:
-    resource: "@AppBundle/Controller/Api"
+    resource: '@AppBundle/Controller/Api'
     type: annotation
     host: "api.{domain}"
     defaults:
@@ -11,3 +11,4 @@ back:
     host:     "back.{domain}"
     defaults:
         domain: '%domain%'
+

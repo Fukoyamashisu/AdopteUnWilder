@@ -38,9 +38,9 @@ class Picture
     /**
      * @var string
      *
-     * @ORM\Column(name="pictureDecription", type="text", nullable=true)
+     * @ORM\Column(name="pictureDescription", type="text", nullable=true)
      */
-    private $pictureDecription;
+    private $pictureDescription;
 
     /**
      * @var bool
@@ -114,27 +114,27 @@ class Picture
     }
 
     /**
-     * Set pictureDecription
+     * Set pictureDescription
      *
-     * @param string $pictureDecription
+     * @param string $pictureDescription
      *
      * @return Picture
      */
-    public function setPictureDecription($pictureDecription)
+    public function setPictureDescription($pictureDescription)
     {
-        $this->pictureDecription = $pictureDecription;
+        $this->pictureDescription = $pictureDescription;
 
         return $this;
     }
 
     /**
-     * Get pictureDecription
+     * Get pictureDescription
      *
      * @return string
      */
-    public function getPictureDecription()
+    public function getPictureDescription()
     {
-        return $this->pictureDecription;
+        return $this->pictureDescription;
     }
 
     /**
