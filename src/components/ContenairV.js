@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import { SideMenu } from '../faac/MenuSide'
 
+import {Row,Col} from 'reactstrap';
+//Styled-Components
+import { StyledContainerV, StyledRow } from '../styled/StyledContainer';
+
+
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 
 class ContenairV extends Component {
@@ -10,8 +15,21 @@ class ContenairV extends Component {
     }
     render() {
         return (
-     
-            <SideMenu {...this.props} />
+            <StyledContainerV>
+                <Row>
+                    <Col xs="2">
+                        <FontAwesomeIcon icon="bars" size="2x"/>
+                    </Col>
+                    <Col>
+                        searchbar
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        Profilecard
+                    </Col>
+                </Row>
+            </StyledContainerV>
         );
     }
 }

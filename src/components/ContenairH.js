@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import {SideMenu} from '../faac/MenuSide';
+import {Col,Row} from 'reactstrap';
+
+//Styled-Components
+import {StyledContainerH,StyledRow} from '../styled/StyledContainer';
+
+import SwipeableViews from 'react-swipeable-views';
 
 
 class ContenairH  extends Component {
@@ -9,7 +14,27 @@ class ContenairH  extends Component {
     }
     render() {
         return (
-            <SideMenu {...this.props}/>
+            <StyledContainerH>
+                <StyledRow>
+                    <Col md="1">
+                        navbar
+                    </Col>
+                    <Col md="2">
+                        sidemenu
+                    </Col>
+                    <Col>
+                        <Row>
+                            searchBar
+                        </Row>
+                        <StyledRow>
+                            <h1>hello</h1>
+                            <SwipeableViews>
+                                
+                            </SwipeableViews>
+                        </StyledRow>
+                    </Col>
+                </StyledRow> 
+            </StyledContainerH>
             
         );
     }
