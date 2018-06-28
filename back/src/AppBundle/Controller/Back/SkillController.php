@@ -16,17 +16,24 @@ class SkillController extends Controller
      */
     public function editSkill(Request $request)
     {
-        $userId = $this->getDoctrine()->getRepository(Skill::class)->find(1);
+        $em = $this->getDoctrine()->getManager();
+        $profil = $em->getRepository(Profil::class)->find(1);
 
         $editForm = $this->createForm('AppBundle\Form\SkillType');
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+
+            $skill = $editForm->getData();
+            $skill->setProfil($profil);
+
+            $profil->addSkill($skill);
+
+
+            $em->flush();
 
             return $this->redirectToRoute('back.home');
         }
-
 
             return $this->render('profil/skill.html.twig', [
             'editForm' => $editForm->createView(),

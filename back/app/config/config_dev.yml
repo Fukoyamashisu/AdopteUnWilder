@@ -2,7 +2,8 @@ imports:
     - { resource: config.yml }
 
 parameters:
-    domain: localhost
+    domain: adopteflavien.com
+    domaina: adopteflavien.com
 
 framework:
     router:
