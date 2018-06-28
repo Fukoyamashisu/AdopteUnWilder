@@ -11,6 +11,7 @@ namespace AppBundle\Controller\Back;
 
 
 use AppBundle\Entity\Project;
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -54,7 +55,34 @@ class ProjectController extends Controller
     }
 
     /**
-     * Display admin space show productions
+     *
+     * @Route("/add", name="project_add")
+     * @Method({"GET","POST"})
+     */
+    public function projectAdd(Request $request)
+    {
+        $user = $this->getUser();
+        $project = new Project();
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
+
+            return $this->redirectToRoute('project_list');
+        }
+
+        return $this->render('profil/project_add.html.twig', [
+            'project' => $project,
+            'form' => $form->createView(),
+            'user' =>$user,
+        ]);
+
+    }
+
+    /**
      *
      * @Route("/{id}/edit", name="project_edit")
      * @Method({"GET","POST"})

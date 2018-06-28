@@ -60,9 +60,12 @@ class Project
      */
     private $pictures;
 
-    private function __construct()
+
+
+    public function __construct()
     {
         $this->pictures = new ArrayCollection();
+        $this->profil = new ArrayCollection();
     }
 
 

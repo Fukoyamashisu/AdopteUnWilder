@@ -6,6 +6,10 @@
     <div class="row justify-content-center">
         <span class="h2 no-tajawal d-inline color-orange ml-1 mb-4">Liste des projets</span>
     </div>
+    <div>
+        <a class="btn btn-primary text-white background-color-blue border-color-blue ml-auto m-2"
+           href="{{  path('project_add') }}"><span class="fas fa-plus-square mr-2"></span>Ajouter un projet à votre portfolio</a>
+    </div>
 
     {% for project in projects %}
     <table class="table bg-grey table-sm table-responsive-lg mx-2 text-center">
@@ -72,7 +76,7 @@
             </tbody>
         </table>
         <a class="btn btn-primary text-white background-color-blue border-color-blue ml-auto m-2"
-           href="{{  path('add_picture', { 'id': project.id }) }}"><span class="fas fa-plus-square mr-2"></span>Ajouter une picture</a>
+           href="{{  path('add_picture', { 'id': project.id }) }}"><span class="fas fa-plus-square mr-2"></span>Ajouter une photo</a>
     </div>
     {% endfor %}
 

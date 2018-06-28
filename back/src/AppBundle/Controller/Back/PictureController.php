@@ -60,6 +60,17 @@ class PictureController extends Controller
                             . $uploader->uploadPhoto($uploadedPicture)
                         );
                         $picture->setProject($project);
+                        
+                        if ($picture->getIsMain()) {
+                            $pictureAlreadyIsMain = $this->getDoctrine()->getManager()->getRepository(Picture::class)->findOneBy([
+                                'isMain' => true,
+                                'project' => $project,
+                            ]);
+                            if ($pictureAlreadyIsMain && $pictureAlreadyIsMain != $picture) {
+
+                                $pictureAlreadyIsMain->setIsMain(false);
+                            }
+                        }
 
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($picture);
