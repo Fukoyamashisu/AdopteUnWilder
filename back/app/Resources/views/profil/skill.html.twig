@@ -1,21 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <section class="container-fluid">
 
-<h1>HELLO</h1>
-<section class="container">
 
-    <div class="row">
-    {{ form_start(editForm) }}
-        <div class="form-group row align-items-center justify-content-center px-auto mt-3 mb-5">
-            <button type="submit" value="Valider" class="btn btn-primary">Valider</button>
+        <div class="row">
+
+            <div class="col-6 offset-3 m-2">
+                <h1>Ajout d'une compétence</h1>
+            </div>
+
+            <div class="col-6 offset-3 m-2">
+                {{ form_start(editForm) }}
+                {{ form_row(editForm.skillName) }}
+                {{ form_row(editForm.skillsOrder) }}
+                {{ form_row(editForm.skillLevel) }}
+            </div>
+            <div class="col-6 offset-3 m-2">
+                <button type="submit" value="Valider" class="btn btn-primary">Valider</button>
+            </div>
+            {{ form_end(editForm) }}
         </div>
-    {{ form_end(editForm) }}
-    </div>
 
 
-
-</section>
+    </section>
 
 
 
