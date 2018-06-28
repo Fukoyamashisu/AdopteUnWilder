@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/css/index.css';
 import App from './components/App';
+import theme from './styled/theme';
+import {ThemeProvider} from 'styled-components';
 import registerServiceWorker from './registerServiceWorker';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -17,5 +19,9 @@ if(module.hot) module.hot.accept();
 
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <ThemeProvider theme={theme}>
+        <App />
+    </ThemeProvider>,
+     document.getElementById('root'));
 registerServiceWorker();
