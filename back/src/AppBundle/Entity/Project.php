@@ -208,5 +208,15 @@ class Project
         return $this;
     }
 
+    public function getMainPicture()
+    {
+        foreach ($this->pictures as $picture) {
+            if ($picture->getIsMain()) {
+                $mainPicture = $picture;
+                return $mainPicture;
+            }
+        }
+    }
+
 }
 
