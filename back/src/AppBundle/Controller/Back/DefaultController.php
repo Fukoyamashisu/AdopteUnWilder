@@ -9,11 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="back.home", host="back.{domain}", defaults={"domain"="%domain%"})
+     * @Route("/", name="back.home")
      */
     public function indexAction(Request $request)
     {
-        die('f');
+        die('back');
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
