@@ -23,6 +23,9 @@ class SecurityController extends Controller
      */
     public function login(Request $request, AuthenticationUtils $authenticationUtils)
     {
+        if ($user = $this->getUser()) {
+            return $this->redirectToRoute('user_index', ['id' => $user->getId()]);
+        }
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
@@ -33,5 +36,16 @@ class SecurityController extends Controller
             'last_username' => $lastUsername,
             'error' => $error,
         ));
+    }
+
+    /**
+     * @Route("/redirection", name="redirection")
+     */
+    public function redirectionAfterLogin()
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+
+        return $this->redirectToRoute('user_index', ['id' => $user->getId()]);
     }
 }
