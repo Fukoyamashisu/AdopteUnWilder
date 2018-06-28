@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import { SideMenu } from '../faac/MenuSide'
-
-
+import React, {Component} from 'react';
+import {SideMenu} from '../faac/MenuSide'
 
 class ContenairV extends Component {
     constructor(props) {
@@ -10,8 +8,7 @@ class ContenairV extends Component {
     }
     render() {
         return (
-     
-            <SideMenu {...this.props} />
+            <div></div>
         );
     }
 }
