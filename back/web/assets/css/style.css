@@ -1,0 +1,21 @@
+.main-picture-thumbnails {
+    height: 150px;
+    width: auto;
+}
+
+.picture-thumbnails {
+    height : 75px;
+    width: auto;
+}
+
+.bg-grey {
+    background-color: #e3e6ed;
+}
+
+.w-20 {
+    width: 20%;
+}
+
+.w-40 {
+    width: 40%;
+}

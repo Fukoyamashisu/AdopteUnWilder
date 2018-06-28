@@ -1,11 +1,11 @@
+{% extends 'base.html.twig' %}
 
-
-{% block content %}
+{% block body %}
     
     <div class="container bg-white" id="container-edit-project">
         <div class="row text-center">
             <div class="col-5 mt-5 mx-auto">
-                <h1 id="contact-titre" class="text-center color-orange pt-h1">Editer une photo</h1>
+                <h1 id="contact-titre" class="text-center color-orange pt-h1">Modifier une photo</h1>
                 <img class="picture-thumbnails" src="{{ picture.pictureUrl }}" alt="picture-{{ picture.pictureTitle }}">
             </div>
             <div class="col-12 col-lg-6 offset-lg-3 col-md-4 offset-md-4" id="upload-files">
@@ -18,11 +18,9 @@
                     {{ form_row (edit_form.pictureDescription) }}
                 </div>
                 <div>
-                    {% if not picture.isMain %}
                     {{ form_row (edit_form.isMain) }}
-                    {% endif %}
                 </div>
-                <button type="submit" class="btn btn-primary border-color-blue background-color-blue"/><i class="fas fa-pencil-alt mr-2"></i>Editer cette picture</button>
+                <button type="submit" class="btn btn-primary border-color-blue background-color-blue"/><i class="fas fa-pencil-alt mr-2"></i>Valider la modification</button>
                 {{ form_end(edit_form) }}
             </div>
         </div>
