@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Api;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -13,10 +14,16 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        die('api');
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        $name = [
+            'titre_album' => 'Abacab',
+            'groupe' => 'Genesis',
+            'annee' => 1981,
+            'genre' => 'Rock',
+        ];
+        $response = new Response(json_encode(array('name' => $name)));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
+
 }
