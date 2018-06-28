@@ -21,7 +21,6 @@ export const StyledFooter = Styled.div `
 export const StyledH2 = Styled.h2 `
         padding-top: 4%;
         margin-left: 4%;
-
 `;
 export const StyledP = Styled.p `
         margin-left: 4%;
