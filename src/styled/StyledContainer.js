@@ -14,11 +14,12 @@ export const StyledContainerH = Styled.div`
 `
 
 export const StyledRow = Styled.div`
-    display:flex;
+    display:${props => props.slick ? "block" : "flex"};
     height:100%;
     width:100%;
     margin-right:-15px;
     margin-left:-15px;
+    align-items:${props => props.align ? "center" : null};
 `
 
 export const StyledContainerV = Styled.div`
