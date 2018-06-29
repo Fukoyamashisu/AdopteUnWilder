@@ -5,6 +5,7 @@ import {
   StyledProfilSubTitle,
   StyledProfilTitle
 } from "../styled/StyledProfilCard";
+import photo from "../assets/img/photo.jpg";
 
 
 class ProfileCard extends Component {
@@ -14,11 +15,14 @@ class ProfileCard extends Component {
   }
   render() {
     const {history,user} = this.props;
+    const {skills} = user;
+    const allSkills = skills.map(el => el.name);
 
     return (
-      <StyledProfilCard url="https://majorblog.com/wp-content/uploads/2016/11/silhouette-of-man-looking-away.jpg">
-          <StyledProfilTitle onClick={() => history.push(`/profile/${user.id}`,{user})}>JULIEN FOUCHER</StyledProfilTitle>
-          <StyledProfilSubTitle>Javascript, React, Node.js</StyledProfilSubTitle>
+      <StyledProfilCard url="https://cdn.pixabay.com/photo/2016/10/09/18/03/smile-1726471_640.jpg">
+        <span />
+        <StyledProfilTitle onClick={() => history.push(`/profile/${user.id}`, { user })}>{user.firstName} {user.lastName}</StyledProfilTitle>
+        <StyledProfilSubTitle>{allSkills}</StyledProfilSubTitle>
       </StyledProfilCard>
     );
   }

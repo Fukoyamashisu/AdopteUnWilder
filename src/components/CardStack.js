@@ -1,7 +1,13 @@
-import React, {Component} from 'react';
-import {StyledCardStack, StyledH2, StyledP, StyledContainer} from '../styled/StyledCardStack'
-import {Col, Row, Container} from 'reactstrap'
+import React, { Component } from "react";
+import {
+  StyledCardStack,
+  StyledH2,
+  StyledP,
+  StyledContainer
+} from "../styled/StyledCardStack";
+import { Col, Row, Container } from "reactstrap";
 class CardStack extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -27,8 +33,11 @@ class CardStack extends Component {
                     </StyledContainer>
                 </StyledCardStack>
             </Row>
-        );
-    }
+          </StyledContainer>
+        </StyledCardStack>
+      </Row>
+    );
+  }
 }
 
 export default CardStack;
