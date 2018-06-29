@@ -1,7 +1,7 @@
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import Routes from "../routes.js";
 
-import Routes from '../routes.js';
 
 
 
@@ -9,7 +9,9 @@ import Routes from '../routes.js';
 class App extends Component {
   render() {
     return (
-        <Routes {...this.props}/>
+
+    <Routes {...this.props}/>
+
     );
   }
 }
