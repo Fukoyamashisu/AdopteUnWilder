@@ -19,14 +19,12 @@ class SearchBar extends Component {
 
         const inputStyle = {
             alignItems: "center",
-            borderBottom: `1px solid ${this.state.focus ? "#fa7a0f" : "#006e90"}`,
             color: `${this.state.focus ? "#fa7a0f" : "#006e90"}`,
             padding: "5px"
         }
 
         return (
-            <div style={{width:"60%"}}>
-                <InputGroup>
+                <InputGroup style={{ borderBottom: `1px solid ${this.state.focus ? "#fa7a0f" : "#006e90"}` }}>
                     <InputGroupAddon addonType="prepend"
                         style={inputStyle}>
                         <FontAwesomeIcon icon="search" />
@@ -35,12 +33,12 @@ class SearchBar extends Component {
                         type="text"
                         id="inputSearch"
                         name="search"
+                        placeholder="Search"
                         onFocus={() => this.setState({ focus: !this.state.focus })}
                         onBlur={() => this.setState({ focus: !this.state.focus })}
                         onChange={e => this.setState({ search: e.target.value })}
                     />
                 </InputGroup>
-            </div>
         );
     }
 }

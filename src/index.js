@@ -9,14 +9,16 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
+<<<<<<< HEAD
+import { faChevronRight, faChevronLeft,faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+=======
 import { faCheckSquare, faCoffee, faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+>>>>>>> 698257766fbd1ce991253dffe1f9f93ea74c1d15
 
 
-library.add(fab, faCheckSquare, faCoffee, faBars, faSearch);
+library.add( faChevronRight, faChevronLeft, faBars, faSearch);
 
 if (module.hot) 
     module.hot.accept();

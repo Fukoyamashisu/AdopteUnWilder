@@ -4,6 +4,12 @@ body {
   font-family: sans-serif;
 }
 
-html {
-  font-size: 100%;
+@media all and (max-width: 768px) { 
+  #NavBarV{
+    display:none;
+  }
+  #SideMenuMain{
+    display:none;
+  }
 }
+

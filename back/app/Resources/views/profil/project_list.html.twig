@@ -1,37 +1,47 @@
+{% extends 'base.html.twig' %}
 
-
-{% block content %}
+{% block body %}
 
 <section id="" class="container bg-white pt-3 pb-1 px-5">
     <div class="row justify-content-center">
         <span class="h2 no-tajawal d-inline color-orange ml-1 mb-4">Liste des projets</span>
     </div>
-
+    <div>
+        <a class="btn btn-primary ml-auto m-2"
+           href="{{  path('project_add') }}"><span class="fas fa-plus-square mr-2"></span>Ajouter un projet à votre portfolio</a>
+    </div>
+    <div>
+        <a class="btn btn-success ml-auto m-2"
+           href="{{  path('back.user.index') }}"><span class="fas fa-plus-square mr-2"></span>Retour à mon profil</a>
+    </div>
     {% for project in projects %}
     <table class="table bg-grey table-sm table-responsive-lg mx-2 text-center">
         <thead>
             <tr>
                 <th colspan="4" scope="col">
                     <h3 class="mb-0 mt-2 d-inline-block">Projet n° {{ project.id }}</h3>
-                    <button class="btn btn-secondary text-white border-color-orange background-color-orange project-toggle prod-toggle-{% if(app.request.query.get('id') == project.id) %}on{% else %}off{% endif %} float-right" type="button" data-toggle="collapse" data-target="#project-{{ project.id }}" aria-expanded="false" aria-controls="project-{{ project.id }}">
+                    <button class="btn btn-secondary project-toggle prod-toggle-{% if(app.request.query.get('id') == project.id) %}on{% else %}off{% endif %} float-right" type="button" data-toggle="collapse" data-target="#project-{{ project.id }}" aria-expanded="false" aria-controls="project-{{ project.id }}">
                         <span class="fas fa-{% if(app.request.query.get('id') == project.id) %}minus{% else %}plus{% endif %}-square"></span></button>
                 </th>
             </tr>
         </thead>
         <tbody>
+
             <tr>
                 <td class="align-middle w-20">
                     <a class="color-black"><span class="fas mr-2"></span>{{ project.projectTitle }}</a>
                 </td>
+        {% if project.mainPicture %}
                 <td class="align-middle w-20">
                     <img class="main-picture-thumbnails" src="{{ project.mainPicture.pictureUrl }}"
                          alt="picture-{{ project.mainPicture.pictureTitle }}"/>
                 </td>
+            {% endif %}
                 <td class="align-middle text-left w-40">
                     <p class="p-2">{{ project.projectDescription }}</p>
                 </td>
                 <td class="align-middle w-20">
-                    <a class="btn btn-primary text-white background-color-blue border-color-blue"
+                    <a class="btn btn-primary"
                        href="{{ path('project_edit', {'id': project.id }) }}"><span class="fas fa-pencil-alt fa-fw mr-2"></span>Modifier le projet</a>
                 </td>
             </tr>
@@ -50,6 +60,7 @@
                 </tr>
             </thead>
             <tbody>
+
             {% for picture in project.pictures %}
                 <tr>
                     <td class="align-middle">{{ picture.pictureTitle }}</td>
@@ -61,7 +72,7 @@
                     <td class="align-middle">
                         {% if not picture.isMain %}
                         {{ form_start(deleteForms[picture.id], {'attr': {'onclick': 'return confirm("Etes vous sûr de vouloir supprimer cette picture ?")'}}) }}
-                        <button type="submit" class="btn btn-danger text-white background-color-orange border-color-orange">
+                        <button type="submit" class="btn btn-danger">
                             <i class="fas fa-trash fa-fw m-1"></i>
                         </button>
                         {{ form_end(deleteForms[picture.id]) }}
@@ -69,10 +80,11 @@
                     </td>
                     {% endfor %}
                 </tr>
+
             </tbody>
         </table>
-        <a class="btn btn-primary text-white background-color-blue border-color-blue ml-auto m-2"
-           href="{{  path('add_picture', { 'id': project.id }) }}"><span class="fas fa-plus-square mr-2"></span>Ajouter une picture</a>
+        <a class="btn btn-primary text-white ml-auto m-2"
+           href="{{  path('add_picture', { 'id': project.id }) }}"><span class="fas fa-plus-square mr-2"></span>Ajouter une photo</a>
     </div>
     {% endfor %}
 
