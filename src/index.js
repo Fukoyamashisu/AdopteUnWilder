@@ -8,26 +8,29 @@ import registerServiceWorker from "./registerServiceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
 
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {
+    faBars,
+    faSearch,
+    faHome,
+    faEnvelope,
+    faInfoCircle,
+    faPhone
+} from '@fortawesome/free-solid-svg-icons'
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-<<<<<<< HEAD
-import { faChevronRight, faChevronLeft,faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
-=======
-import { faCheckSquare, faCoffee, faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
->>>>>>> 698257766fbd1ce991253dffe1f9f93ea74c1d15
-
-
-library.add( faChevronRight, faChevronLeft, faBars, faSearch);
+library.add(faBars, faSearch, faHome, faEnvelope, faInfoCircle, faPhone);
 
 if (module.hot) 
     module.hot.accept();
 
+
 ReactDOM.render(
-    <Router>
+  <Router>
     <ThemeProvider theme={theme}>
-        <App/>
+      <App />
     </ThemeProvider>
-</Router>, document.getElementById('root'));
+  </Router>,
+  document.getElementById("root")
+);
 
 registerServiceWorker();

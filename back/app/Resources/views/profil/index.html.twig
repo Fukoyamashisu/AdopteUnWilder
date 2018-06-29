@@ -1,8 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block breadcrumb %}
-{% endblock %}
-
 
 {% block body %}
 
@@ -26,36 +23,59 @@
                 <div class="card-header">
                     <h4>Mon profil</h4>
                 </div>
+                <h1>Bonjour {{ app.user.profil.firstName}}</h1>
                 <div class="card-body text-info">
                     <img src="{{ user.profilPicture}}">
                 </div>
-                <div class="card-body text-info">
-                    {{ user.firstName }}
+                <div class="row">
+                    <div class="card-body text-info">
+                        Prénom : {{ user.firstName }}
+                    </div>
+                    <div class="card-body text-info">
+                        Nom : {{ user.lastName }}
+                    </div>
+                    <div class="card-body text-info">
+                        Adresse : {{ user.adress }}
+                    </div>
+                    <div class="card-body text-info">
+                        Numéro de téléphone : {{ user.phoneNumber }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card-body text-info">
+                        Promo Wilds : {{ user.wildPromo }}
+                    </div>
+                    <div class="card-body text-info">
+                        Titre de votre profil : {{ user.profilTitle }}
+                    </div>
+                    <div class="card-body text-info">
+                        Votre description : {{ user.profilDescription }}
+                    </div>
+                    <div class="card-body text-info">
+                        Votre CV : {{ user.cvLink }}
+                    </div>
                 </div>
                 <div class="card-body text-info">
-                    {{ user.lastName }}
+                    Photo de couverture : <br><img src="{{ user.coverPicture}}">
                 </div>
-                <div class="card-body text-info">
-                    {{ user.adress }}
+                <div>
+                    <a class="btn btn-success ml-auto m-2"
+                       href="{{  path('back.user.edit') }}"><span class="fas fa-plus-square
+                       mr-2"></span>Modifier votre profil</a>
                 </div>
-                <div class="card-body text-info">
-                    {{ user.phoneNumber }}
+                <div>
+                    <a class="btn btn-success ml-auto m-2"
+                       href="{{  path('back.skill') }}"><span class="fas fa-plus-square mr-2"></span>Ajouter une compétence à mon profil</a>
                 </div>
-                <div class="card-body text-info">
-                    <img src="{{ user.coverPicture}}">
+                <div>
+                    <a class="btn btn-success ml-auto m-2"
+                       href="{{  path('project_add') }}"><span class="fas fa-plus-square mr-2"></span>Ajouter un projet à votre portfolio</a>
                 </div>
-                <div class="card-body text-info">
-                    {{ user.wildPromo }}
+                <div>
+                    <a class="btn btn-success ml-auto m-2"
+                       href="{{  path('back.experiences') }}"><span class="fas fa-plus-square mr-2"></span>Ajouter une expérience à mon profil</a>
                 </div>
-                <div class="card-body text-info">
-                    {{ user.profilTitle }}
-                </div>
-                <div class="card-body text-info">
-                    {{ user.profilDescription }}
-                </div>
-                <div class="card-body text-info">
-                    {{ user.cvLink }}
-                </div>
+
             </div>
         </div>
     </div>
