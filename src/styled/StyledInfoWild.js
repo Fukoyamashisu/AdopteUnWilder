@@ -1,15 +1,17 @@
 import Styled from 'styled-components'
-
 export const StyledInfoWild = Styled.div `
         width: 100%;
-        height: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
         
 `
 export const StyledInfoWildHeader = Styled.div `
-        min-width: 100%;
+        width: 100%;
         height: 20%;
         background: ${props => props.theme.wildColor}
         padding-bottom:5%;
+        display:flex;
         text-align:center;
         h1 {
                 font-family: Lato;
@@ -26,15 +28,25 @@ export const StyledInfoWildHeader = Styled.div `
 `;
 
 export const StyledInfoWildCore = Styled.div `
-        margin-left: 5%;
+        display:flex;
+        width: 100%;
         p {
                 margin: 0;
+                margin-bottom: 3%;
         }
         h3 {
                 font-size: 23px;
+                border-top: solid 1px ${props => props.theme.lightBlue}; 
+                border-bottom: solid 1px ${props => props.theme.lightBlue}; 
+                margin-top: 50px;
+                padding: 10px;
+
+                
         }
         img {
                 width: 200px;
                 height: 200px;
+                margin-top: 50px;
+
         }
 `;

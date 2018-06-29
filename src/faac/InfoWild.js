@@ -30,50 +30,57 @@ export const InfoWild = props => {
             description: "C’est après son BTS IRIS (programmation C / C++) que Jonathan découvre et se pas" +
                     "sionne pour le développement web. Sa licence pro en poche, il passera ensuite pl" +
                     "us de 7 ans dans le métier de développeur avant de se lancer dans la formation.",
-            skills: ["API MASTER", "Soirée cuire moustache", "Il attend", "$?$?$$????$$?$?$$???$??$?????$$$$?$????$$?????$$$??????$$"]
+            skills: ["API MASTER", "Soirée cuire moustache", "Il attend", "$?$?$$????$$?$?$$???$??$?????$"]
         }
     ]
     return <StyledInfoWild>
         <StyledInfoWildHeader>
-            <h1>Wild Code School Lyon</h1>
-            <p>17 rue Delandine, 69002 Lyon</p>
-            <p><FontAwesomeIcon icon="phone"/>
-                +33 6 58 46 83 32</p>
-            <a href="https://wildcodeschool.fr/lyon/">Visiter notre site</a>
+            <Col>
+                <h1>Wild Code School Lyon</h1>
+                <p>17 rue Delandine, 69002 Lyon</p>
+                <p><FontAwesomeIcon icon="phone"/>
+                    +33 6 58 46 83 32</p>
+                <a href="https://wildcodeschool.fr/lyon/">Visiter notre site</a>
+            </Col>
         </StyledInfoWildHeader>
         <StyledInfoWildCore>
-            {bosses.map((elt, i) => <Row key={i}>
-                {elt.photo === julien
-                    ? <Col md="3">
-                            <img alt="" src={elt.photo}/>
-                        </Col>
-                    : <Col md="8">
-                        <h3>{elt.name}</h3>
-                        <p>{elt.description}</p>
-                        <Row>
-                            {elt
-                                .skills
-                                .map((elt, i) => <Col md="3">
-                                    {elt}
-                                </Col>)}
-                        </Row>
-                    </Col>}
-                {elt.photo === julien
-                    ? <Col md="8">
+            <Col>
+                {bosses.map((elt, i) => <Row
+                    key={i}
+                    style={{
+                    justifyContent: "center"
+                }}>
+                    {elt.photo === julien
+                        ? <Col md="3">
+                                <img alt="" src={elt.photo}/>
+                            </Col>
+                        : <Col md="8">
                             <h3>{elt.name}</h3>
                             <p>{elt.description}</p>
                             <Row>
                                 {elt
                                     .skills
                                     .map((elt, i) => <Col md="3">
-                                        {elt}
-                                    </Col>)}
+                                        {elt}</Col>)}
                             </Row>
-                        </Col>
-                    : <Col md="3">
-                        <img alt="" src={elt.photo}/>
-                    </Col>}
-            </Row>)}
+                        </Col>}
+                    {elt.photo === julien
+                        ? <Col md="8">
+                                <h3>{elt.name}</h3>
+                                <p>{elt.description}</p>
+                                <Row>
+                                    {elt
+                                        .skills
+                                        .map((elt, i) => <Col md="3">
+                                            {elt}
+                                        </Col>)}
+                                </Row>
+                            </Col>
+                        : <Col md="3">
+                            <img alt="" src={elt.photo}/>
+                        </Col>}
+                </Row>)}
+            </Col>
         </StyledInfoWildCore>
     </StyledInfoWild>
 }
