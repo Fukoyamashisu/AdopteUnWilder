@@ -117,7 +117,7 @@ class Profil implements \JsonSerializable
     private $skills;
 
     /**
-     * @ORM\OneToMany(targetEntity="Experience", mappedBy="profil")
+     * @ORM\OneToMany(targetEntity="Experience", mappedBy="profil", cascade={"persist"})
      */
     private $experiences;
 
@@ -477,6 +477,10 @@ class Profil implements \JsonSerializable
     {
         $this->skills[] = $skill;
     }
+    public function removeSkill($skill)
+    {
+        $this->skills[] = $skill;
+    }
 
     /**
      * @return mixed
@@ -494,6 +498,15 @@ class Profil implements \JsonSerializable
     {
         $this->experiences = $experiences;
         return $this;
+    }
+
+    public function addExperience($experience)
+    {
+        $this->experiences[] = $experience;
+    }
+    public function removeExperience($experience)
+    {
+        $this->experiences[] = $experience;
     }
 
     /**
