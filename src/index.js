@@ -6,22 +6,26 @@ import theme from "./styled/theme";
 import { ThemeProvider } from "styled-components";
 import registerServiceWorker from "./registerServiceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 
-library.add(fab, faCheckSquare, faCoffee);
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-if (module.hot) module.hot.accept();
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheckSquare, faCoffee, faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+
+
+library.add(fab, faCheckSquare, faCoffee, faBars, faSearch);
+
+if (module.hot) 
+    module.hot.accept();
 
 ReactDOM.render(
-  <Router>
+    <Router>
     <ThemeProvider theme={theme}>
-      <App />
+        <App/>
     </ThemeProvider>
-  </Router>,
-  document.getElementById("root")
-);
+</Router>, document.getElementById('root'));
+
 registerServiceWorker();

@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="profil")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProfilRepository")
  */
-class Profil
+class Profil implements \JsonSerializable
 {
     /**
      * @var int
@@ -112,12 +112,12 @@ class Profil
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="Skill", mappedBy="profil")
+     * @ORM\OneToMany(targetEntity="Skill", mappedBy="profil", cascade={"persist"})
      */
     private $skills;
 
     /**
-     * @ORM\OneToMany(targetEntity="Experience", mappedBy="profil")
+     * @ORM\OneToMany(targetEntity="Experience", mappedBy="profil", cascade={"persist"})
      */
     private $experiences;
 
@@ -131,7 +131,7 @@ class Profil
      */
     private $recommendations;
 
-    private function __construct()
+    public function __construct()
     {
         $this->skills = new ArrayCollection();
         $this->recommendations = new ArrayCollection();
@@ -460,7 +460,7 @@ class Profil
      */
     public function getSkills()
     {
-        return $this->skills;
+        return $this->skills->toArray();
     }
 
     /**
@@ -471,6 +471,15 @@ class Profil
     {
         $this->skills = $skills;
         return $this;
+    }
+
+    public function addSkill($skill)
+    {
+        $this->skills[] = $skill;
+    }
+    public function removeSkill($skill)
+    {
+        $this->skills[] = $skill;
     }
 
     /**
@@ -489,6 +498,15 @@ class Profil
     {
         $this->experiences = $experiences;
         return $this;
+    }
+
+    public function addExperience($experience)
+    {
+        $this->experiences[] = $experience;
+    }
+    public function removeExperience($experience)
+    {
+        $this->experiences[] = $experience;
     }
 
     /**
@@ -527,5 +545,34 @@ class Profil
         return $this;
     }
 
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'adress' => $this->adress,
+            'phoneNumber' => $this->phoneNumber,
+            'availability' => $this->availability,
+            'profilPicture' => $this->profilPicture,
+            'coverPicture' => $this->coverPicture,
+            'wildPromo' => $this->wildPromo,
+            'workingArea' => $this->workingArea,
+            'profilTitle' => $this->profilTitle,
+            'profilDescription' => $this->profilDescription,
+            'cvLink' => $this->cvLink,
+            'skills' => $this->skills->toArray(),
+            'recommendations' => $this->recommendations->toArray(),
+            'projects' => $this->projects->toArray(),
+            'experiences' => $this->experiences->toArray(),
+        ];
+    }
 }
 

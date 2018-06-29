@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="container-fluid">
+
+
+        <div class="row">
+
+            <div class="col-6 offset-3 m-2">
+                <h1>Ajout d'une compétence</h1>
+            </div>
+
+            <div class="col-6 offset-3 m-2">
+                {{ form_start(editForm) }}
+                {{ form_row(editForm.skillName) }}
+                {{ form_row(editForm.skillsOrder) }}
+                {{ form_row(editForm.skillLevel) }}
+            </div>
+            <div class="col-6 offset-3 m-2">
+                <button type="submit" value="Valider" class="btn btn-primary">Valider</button>
+            </div>
+            {{ form_end(editForm) }}
+        </div>
+
+
+    </section>
+
+
+
+{% endblock %}

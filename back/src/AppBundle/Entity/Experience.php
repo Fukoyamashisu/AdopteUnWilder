@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="experience")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ExperienceRepository")
  */
-class Experience
+class Experience implements \JsonSerializable
 {
     /**
      * @var int
@@ -178,5 +178,21 @@ class Experience
         return $this;
     }
 
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'title' => $this->experienceTitle,
+            'description' => $this->experienceDescription,
+            'date' => $this->experienceDate,
+            'isHidden' => $this->isHidden,
+        ];
+    }
 }
 

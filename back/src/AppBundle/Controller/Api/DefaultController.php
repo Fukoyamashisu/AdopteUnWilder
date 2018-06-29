@@ -2,21 +2,25 @@
 
 namespace AppBundle\Controller\Api;
 
+use AppBundle\Entity\Profil;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="api.home")
+     * @Route("/", name="api.home", host="api.adopteMartin.com")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        die('api');
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        $profils = $this->getDoctrine()->getManager()->getRepository(Profil::class)->findAll();
+
+        $response = new Response(json_encode(array('profils' => $profils)));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
+
 }

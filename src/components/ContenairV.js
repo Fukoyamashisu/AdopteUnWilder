@@ -1,26 +1,39 @@
-import React, { Component } from "react";
-import MenuProfile from "./MenuProfile";
-import { Container, Row, Col } from "reactstrap";
+
+import React, { Component } from 'react';
+
+import {Row,Col} from 'reactstrap';
+//Styled-Components
+import { StyledContainerV, StyledRow } from '../styled/StyledContainer';
+
+
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+
+
 
 class ContenairV extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    return (
-      <Container fluid>
-        <Row style={{ height: "100vh" }}>
-          <Col xs="12" lg="5">
-            <MenuProfile {...this.props} />
-          </Col>
-          <Col xs="12" lg="7" style={{ height: "100vh" }}>
-            <p>contenus de la page</p>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+    render() {
+        return (
+            <StyledContainerV>
+                <Row>
+                    <Col xs="2">
+                        <FontAwesomeIcon icon="bars" size="2x"/>
+                    </Col>
+                    <Col>
+                        searchbar
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        Profilecard
+                    </Col>
+                </Row>
+            </StyledContainerV>
+        );
+    }
 }
 
 export default ContenairV;
