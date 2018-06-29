@@ -21,7 +21,7 @@
                 <th colspan="4" scope="col">
                     <h3 class="mb-0 mt-2 d-inline-block">Projet n° {{ project.id }}</h3>
                     <button class="btn btn-secondary project-toggle prod-toggle-{% if(app.request.query.get('id') == project.id) %}on{% else %}off{% endif %} float-right" type="button" data-toggle="collapse" data-target="#project-{{ project.id }}" aria-expanded="false" aria-controls="project-{{ project.id }}">
-                        <span class="fas fa-{% if(app.request.query.get('id') == project.id) %}minus{% else %}plus{% endif %}-square"></span></button>
+                        <span class="fas fa-{% if(app.request.query.get('id') == project.id) %}minus{% else %}plus{% endif %}-square"></span> Ajouter des photos au projet</button>
                 </th>
             </tr>
         </thead>
