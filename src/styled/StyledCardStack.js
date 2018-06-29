@@ -1,9 +1,9 @@
 import Styled from 'styled-components'
 import {Col} from 'reactstrap'
 
-export const StyledCardStack = Styled.div `
+export const StyledCardStack = Styled(Col)`
     min-height: 30vh;
-    width: 70%;
+    margin-top: 6%;
     font-family: Lato;
     font-size: 17px;
     background: ${props => props.theme.grey};

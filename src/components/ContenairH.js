@@ -8,7 +8,7 @@ import { StyledContainerH, StyledRow } from "../styled/StyledContainer";
 import SimpleSlider from "./SimpleSlider";
 
 import SearchBar from "./SearchBar";
-import { NavBar } from "../faac/NavBar";
+
 import { SideMenu } from "../faac/SideMenu";
 import cover from "../assets/img/fond_home.jpg";
 
@@ -27,7 +27,12 @@ class ContenairH extends Component {
             <SideMenu />
           </Col>
           <Col>
-            <StyledRow style={{ backgroundImage: `url(${cover})` }}>
+            <StyledRow
+              style={{
+                backgroundImage: `url(${cover})`,
+                backgroundSize: "cover"
+              }}
+            >
               <Col>
                 <Row>
                   <Col md={{ size: "6", offset: 2 }}>

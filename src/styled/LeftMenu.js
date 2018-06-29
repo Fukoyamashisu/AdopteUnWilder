@@ -2,7 +2,7 @@ import Styled from "styled-components";
 
 export const MainHomeTitle = Styled.h1`
 font-family: "Lato";
-font-size: 6rem;
+font-size: 6    em;
 font-weight:900;
 line-height:4.5rem;
 color: ${props => props.theme.black};

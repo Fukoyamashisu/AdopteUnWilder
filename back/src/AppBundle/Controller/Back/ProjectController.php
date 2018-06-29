@@ -37,7 +37,14 @@ class ProjectController extends Controller
     public function projectList()
     {
         $em = $this->getDoctrine()->getManager();
-        $projects = $em->getRepository(Project::class)->findAll();
+
+        $profil = $em->getRepository(Profil::class)->findOneBy([
+            'user' => $this->getUser(),
+        ]);
+
+        $projects = $em->getRepository(Project::class)->findBy(['profil' => $profil->getId()]);
+
+
 
         $deleteForms = [];
         foreach ($projects as $project) {

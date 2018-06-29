@@ -4,12 +4,17 @@ body {
   font-family: sans-serif;
 }
 
-@media all and (max-width: 768px) { 
-  #NavBarV{
-    display:none;
+@media all and (max-width: 768px) {
+  #NavBarV {
+    display: none;
   }
-  #SideMenuMain{
-    display:none;
+  #SideMenuMain {
+    display: none;
   }
 }
 
+@font-face {
+  font-family: "Monaco";
+  src: url(/home/wilder/Documents/Hackaton_Portfolio/AdopteUnWilder/src/assets/Monaco.ttf)
+    format("truetype");
+}
