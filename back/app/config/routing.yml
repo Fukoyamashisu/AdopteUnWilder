@@ -1,3 +1,11 @@
+app_recommendation:
+    resource: "@AppBundle/Controller/RecommendationController.php"
+    type:     annotation
+
+app_recommendation:
+    resource: "@AppBundle/Controller/recommendationController.php"
+    type:     annotation
+
 api:
     resource: '@AppBundle/Controller/Api'
     type: annotation
