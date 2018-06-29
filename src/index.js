@@ -9,9 +9,16 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faBars, faSearch, faHome, faEnvelope, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
+import {
+    faBars,
+    faSearch,
+    faHome,
+    faEnvelope,
+    faInfoCircle,
+    faPhone
+} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faBars, faSearch, faHome, faEnvelope, faInfoCircle);
+library.add(faBars, faSearch, faHome, faEnvelope, faInfoCircle, faPhone);
 
 if (module.hot) 
     module.hot.accept();
