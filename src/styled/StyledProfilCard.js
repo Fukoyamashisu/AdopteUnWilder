@@ -5,24 +5,13 @@ export const StyledProfilCard = Styled.div`
     flex-direction:column;
     justify-content:flex-end;
     height:80vh;
-    /* background:url(${props => props.url}); */
-    
+
     background-size:cover;
     background-position:center center;
     background: linear-gradient(rgba(255,0,0,0) 25%, ${props =>
-  props.theme.orange});
+        props.theme.orange},url(${props => props.url}));
     margin-right:1em;
     margin-left:1em;
-    & div{
-        position:absolute;
-        display:flex;
-        justify-content:center;
-        top:0;
-        border-radius:0 0 5px 0;
-        padding:10px;
-        color:${props => props.theme.grey};
-        background:${props => props.theme.orange} 25%;
-    }
 `;
 
 export const StyledProfilTitle = Styled.h2`
