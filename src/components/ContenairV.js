@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 
 import {Row,Col} from 'reactstrap';
@@ -6,6 +7,7 @@ import { StyledContainerV, StyledRow } from '../styled/StyledContainer';
 
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+
 
 
 class ContenairV extends Component {

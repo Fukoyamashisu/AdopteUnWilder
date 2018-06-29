@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import {Col,Row} from 'reactstrap';
 
@@ -11,10 +12,10 @@ import { NavBar } from '../faac/NavBar';
 import ProfileCard from './ProfileCard';
 
 
-class ContenairH  extends Component {
+class ContenairH extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = {};
     }
     render() {
 
@@ -57,9 +58,8 @@ class ContenairH  extends Component {
                     </Col>
                 </StyledRow> 
             </StyledContainerH>
-            
         );
     }
 }
 
-export default ContenairH ;
+export default ContenairH;
