@@ -11,6 +11,7 @@ class Animation extends Component {
   onHeaderTyped = () => {
     this.setState({ renderMsg: true });
   };
+  
   render() {
     return (
       <StyledDivAnimation>

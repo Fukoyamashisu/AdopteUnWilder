@@ -28,7 +28,7 @@ class ProfilController extends Controller
         if ($profil) {
 
             return $this->render('profil/index.html.twig', [
-                'user' => $profil,
+                'profil' => $profil,
             ]);
         }
         else {

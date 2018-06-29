@@ -63,7 +63,6 @@ export const SideMenu = ({ children, match }) => {
       }
     ]
   };
-  console.log(this.props);
   return (
     <Row>
       <Col xs="12" lg="3">
