@@ -27,8 +27,7 @@ class ProfilController extends Controller
      */
     public function editAction(Request $request, ImageManipulator $imageManipulator)
     {
-        $em = $this->getDoctrine()->getRepository(Profil::class);
-        $user = $em->find( 1);
+        $user = $this->getUser()->get;
 
         $currentProfilPicture = $user->getProfilPicture();
         $currentCoverPicture = $user->getCoverPicture();
