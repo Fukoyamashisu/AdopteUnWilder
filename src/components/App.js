@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import withData from '../hoc/withData';
+=======
 
-import Routes from '../routes.js';
+import React, { Component } from "react";
+import Routes from "../routes.js";
+>>>>>>> 698257766fbd1ce991253dffe1f9f93ea74c1d15
+
 
 
 
@@ -9,7 +14,9 @@ import Routes from '../routes.js';
 class App extends Component {
   render() {
     return (
-        <Routes {...this.props}/>
+
+    <Routes {...this.props}/>
+
     );
   }
 }
