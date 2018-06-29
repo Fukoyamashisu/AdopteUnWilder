@@ -9,6 +9,7 @@
 
 namespace AppBundle\Controller\Back;
 
+use AppBundle\Entity\Profil;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -60,13 +61,17 @@ class ProjectController extends Controller
      */
     public function projectAdd(Request $request)
     {
-        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $profil = $em->getRepository(Profil::class)->find(1);
+
         $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
+            $project->setProfil($profil);
             $em->persist($project);
             $em->flush();
 
@@ -76,7 +81,7 @@ class ProjectController extends Controller
         return $this->render('profil/project_add.html.twig', [
             'project' => $project,
             'form' => $form->createView(),
-            'user' =>$user,
+            'profil' =>$profil,
         ]);
 
     }
