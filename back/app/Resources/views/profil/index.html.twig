@@ -1,0 +1,45 @@
+{% block breadcrumb %}
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="container apartment text-center marginTopHeader">
+
+        <div class="textBigger mt-3">
+            <div class="card border-info mb-3">
+                <div class="card-header">
+                    <h4>Mon profil</h4>
+                </div>
+                <div class="card-body text-info">
+                    {{ user.firstName }}
+                </div>
+                <div class="card-body text-info">
+                    {{ user.lastName }}
+                </div>
+                <div class="card-body text-info">
+                    {{ user.adress }}
+                </div>
+                <div class="card-body text-info">
+                    {{ user.phoneNumber }}
+                </div>
+                <div class="card-body text-info">
+                    {{ user.profilPicture }}
+                </div>
+                <div class="card-body text-info">
+                    {{ user.wildPromo }}
+                </div>
+                <div class="card-body text-info">
+                    {{ user.profilTitle }}
+                </div>
+                <div class="card-body text-info">
+                    {{ user.profilDescription }}
+                </div>
+                <div class="card-body text-info">
+                    {{ user.cvLink }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
