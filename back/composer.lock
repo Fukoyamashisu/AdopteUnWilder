@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+    "hash": "cf5e46b540a55777127567a427080438",
     "content-hash": "15c86491c031a4178404d1e2705f42d8",
     "packages": [
         {
@@ -43,7 +44,7 @@
                 }
             ],
             "description": "A PHP class that makes working with images as simple as possible.",
-            "time": "2017-09-12T09:03:56+00:00"
+            "time": "2017-09-12 09:03:56"
         },
         {
             "name": "composer/ca-bundle",
@@ -1081,7 +1082,7 @@
                 "image",
                 "palette"
             ],
-            "time": "2016-12-15T09:30:02+00:00"
+            "time": "2016-12-15 09:30:02"
         },
         {
             "name": "monolog/monolog",
