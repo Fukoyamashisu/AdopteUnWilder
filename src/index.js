@@ -6,18 +6,16 @@ import theme from "./styled/theme";
 import { ThemeProvider } from "styled-components";
 import registerServiceWorker from "./registerServiceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faBars,
-  faSearch,
-  faChevronRight,
-  faChevronLeft
-} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faChevronRight, faChevronLeft, faBars, faSearch);
 
-if (module.hot) module.hot.accept();
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {faBars, faSearch, faHome, faEnvelope, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
+
+library.add(faBars, faSearch, faHome, faEnvelope, faInfoCircle);
+
+if (module.hot) 
+    module.hot.accept();
+
 
 ReactDOM.render(
   <Router>
