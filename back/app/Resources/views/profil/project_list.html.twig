@@ -44,6 +44,13 @@
                     <a class="btn btn-primary"
                        href="{{ path('project_edit', {'id': project.id }) }}"><span class="fas fa-pencil-alt fa-fw mr-2"></span>Modifier le projet</a>
                 </td>
+                <td class="align-middle w-20">
+                        {{ form_start(deleteProjectForms[project.id], {'attr': {'onclick': 'return confirm("Etes vous sûr de vouloir supprimer ce projet ?")'}}) }}
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash fa-fw m-1"></i>
+                        </button>
+                        {{ form_end(deleteProjectForms[project.id]) }}
+                </td>
             </tr>
         </tbody>
     </table>
