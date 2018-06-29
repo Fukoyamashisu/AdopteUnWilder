@@ -6,23 +6,21 @@ import theme from "./styled/theme";
 import { ThemeProvider } from "styled-components";
 import registerServiceWorker from "./registerServiceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-
-import {library} from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-    faBars,
-    faSearch,
-    faHome,
-    faEnvelope,
-    faInfoCircle,
-    faPhone
-} from '@fortawesome/free-solid-svg-icons'
+  faBars,
+  faSearch,
+  faHome,
+  faEnvelope,
+  faInfoCircle,
+  faPhone
+} from "@fortawesome/free-solid-svg-icons";
 
 library.add(faBars, faSearch, faHome, faEnvelope, faInfoCircle, faPhone);
 
-if (module.hot) 
-    module.hot.accept();
-
+if (module.hot) module.hot.accept();
 
 ReactDOM.render(
   <Router>
