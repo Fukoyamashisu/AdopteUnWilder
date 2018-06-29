@@ -54,6 +54,12 @@ class Picture
      */
     private $project;
 
+    /**
+     * @var UploadedFile|null
+     *
+     */
+    private $pathFile;
+
 
     /**
      * Get id
@@ -176,6 +182,24 @@ class Picture
     public function setProject($project)
     {
         $this->project = $project;
+        return $this;
+    }
+
+    /**
+     * @return UploadedFile|null
+     */
+    public function getPathFile()
+    {
+        return $this->pathFile;
+    }
+
+    /**
+     * @param UploadedFile|null $pathFile
+     * @return Picture
+     */
+    public function setPathFile($pathFile)
+    {
+        $this->pathFile = $pathFile;
         return $this;
     }
 
