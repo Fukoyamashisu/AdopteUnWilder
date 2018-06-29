@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import data from '../api.json';
+import axios from 'axios';
 
 const withData = WrapComponent => 
 
@@ -9,12 +10,28 @@ const withData = WrapComponent =>
             this.state = {
                 data
             };
+            this.getData = this.getData.bind(this);
         }
 
         componentDidMount(){
-
+            setInterval(() => {
+                this.getData();
+            }, 6*1000*20);
         }
+
         
+        getData(){
+            axios.get("http://api.adopteflavien.com:8000/").then(res => {
+                if(res.data){
+                    this.setState({data:res.data});
+                }
+                !res.data ? this.setState({data}) : console.log(res);
+            }).catch(error => {
+                console.log(error);
+                this.setState({ data });
+            });
+        }
+
         render() {
             return (
             <WrapComponent {...this.props} {...this.state.data}/>

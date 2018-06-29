@@ -19,12 +19,12 @@ class SearchBar extends Component {
 
         const inputStyle = {
             alignItems: "center",
-            color: `${this.state.focus ? "#fa7a0f" : "#006e90"}`,
+            color: `${this.state.focus ? "#252526" : "#fcfcfc"}`,
             padding: "5px"
         }
 
         return (
-                <InputGroup style={{ borderBottom: `1px solid ${this.state.focus ? "#fa7a0f" : "#006e90"}` }}>
+            <InputGroup style={{ borderBottom: `1px solid ${this.state.focus ? "#252526" : "#fcfcfc"}` }}>
                     <InputGroupAddon addonType="prepend"
                         style={inputStyle}>
                         <FontAwesomeIcon icon="search" />

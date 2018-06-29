@@ -8,7 +8,7 @@ import { StyledContainerH, StyledRow } from "../styled/StyledContainer";
 import SimpleSlider from "./SimpleSlider";
 
 import SearchBar from "./SearchBar";
-import { NavBar } from "../faac/NavBar";
+
 import { SideMenu } from "../faac/SideMenu";
 import cover from "../assets/img/fond_home.jpg";
 

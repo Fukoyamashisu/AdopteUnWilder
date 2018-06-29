@@ -16,7 +16,7 @@ export const StyledNav = Styled.div`
         letter-spacing:1px;
         text-decoration:none;
         writing-mode: vertical-rl;
-        font-family:Cardo;
+        font-family:Lato;
         font-size:20px;
         padding:5px;
         color:${props => props.theme.blue};
