@@ -6,6 +6,7 @@ import {
   MainHomeDescription,
   Divider
 } from "../styled/LeftMenu";
+import { NavBar } from "../faac/NavBar";
 import mainLogo from "../assets/img/logo_wild_portfolio.png";
 import SelectLeftPane from "../components/SelectLeftPane";
 
@@ -29,8 +30,10 @@ export const SideMenu = ({ children, match }) => {
   };
   return (
     <Row>
-      <Col lg="1"> </Col>
-      <Col xs="12" lg="10" align="left">
+      <Col xs="12" lg="3">
+        <NavBar style={{ float: "left" }} />
+      </Col>
+      <Col xs="12" lg="7" align="left">
         <div style={{ textAlign: "center" }}>
           <img
             src={mainLogo}
@@ -55,7 +58,7 @@ export const SideMenu = ({ children, match }) => {
           <SelectLeftPane content={contentSkills} />
         </form>
       </Col>
-      <Col lg="1"> </Col>
+      {/* <Col lg="1"> </Col> */}
     </Row>
     // <StyledSideMenu>{children}</StyledSideMenu>
   );
