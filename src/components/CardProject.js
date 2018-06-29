@@ -18,17 +18,19 @@ class CardProject extends Component {
         const {projects} = this.props;
         return (
             <Row>
-                {projects.map((elt, i) => <Col key={i} md="5">
-                    <StyledCardProject>
-                        <StyledCardHeader>
-                            <StyledH2>{elt.title}</StyledH2>
-                        </StyledCardHeader>
-                        <StyledFooter>
-                            <StyledP>{elt.description}</StyledP>
-                            <StyledA href={elt.link}>Lien github</StyledA>
-                        </StyledFooter>
-                    </StyledCardProject>
-                </Col>)}
+                {projects
+                    ? projects.map((elt, i) => <Col key={i} md="5">
+                        <StyledCardProject>
+                            <StyledCardHeader>
+                                <StyledH2>{elt.title}</StyledH2>
+                            </StyledCardHeader>
+                            <StyledFooter>
+                                <StyledP>{elt.description}</StyledP>
+                                <StyledA href={elt.link}>Lien github</StyledA>
+                            </StyledFooter>
+                        </StyledCardProject>
+                    </Col>)
+                    : null}
             </Row>
 
         );

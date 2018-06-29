@@ -12,11 +12,12 @@ import MenuProfile from './MenuProfile'
 class ContenairV extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            user: this.props.location.state
+        };
+        console.log(this.state.user.user);
     }
     render() {
-        const {profils} = this.props;
-        const profil = profils[0];
         const {
             projects,
             skills,
@@ -29,8 +30,8 @@ class ContenairV extends Component {
             profilTitle,
             profilDescription,
             availability
-        } = profil
-        console.log(profil);
+        } = this.state.user.user;
+        console.log(this.state.user);
         return (
             <StyledContainerV>
                 <Row>
