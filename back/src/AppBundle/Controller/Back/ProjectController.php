@@ -126,10 +126,19 @@ class ProjectController extends Controller
         $form = $this->createDeleteProjectForm($project);
         $form->handleRequest($request);
 
+        if ($project->getPictures()) {
+            $this->addFlash('warning' , 'Toutes les photos doivent etre supprimées avant de pouvoir supprimer le projet');
+            return $this->redirectToRoute('project_list');
+        }
+
+
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($project);
             $em->flush();
+
+            $this->addFlash('success' , 'Projet supprimé !');
         }
         return $this->redirectToRoute('project_list');
     }

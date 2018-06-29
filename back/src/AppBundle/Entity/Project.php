@@ -198,7 +198,7 @@ class Project implements \JsonSerializable
      */
     public function getPictures()
     {
-        return $this->pictures;
+        return $this->pictures->toArray();
     }
 
     /**
@@ -210,6 +210,7 @@ class Project implements \JsonSerializable
         $this->pictures = $pictures;
         return $this;
     }
+
 
     public function getMainPicture()
     {
