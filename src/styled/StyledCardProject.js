@@ -2,6 +2,8 @@ import Styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const StyledCardProject = Styled.div`
+    font-family: Lato;
+    font-weight: 900;
     width: 100%;
     margin-top: 30px;
     font-size: 17px;
@@ -19,11 +21,11 @@ export const StyledFooter = Styled.div`
 `;
 export const StyledH2 = Styled.h2`
         padding-top: 4%;
-        margin-left: 4%;
+        margin-left: 10px;
         font-family: Lato;
 `;
 export const StyledP = Styled.p`
-        margin-left: 0;
+        margin-left: 10px;
 `;
 export const StyledA = Styled.a`
         color: ${props => props.theme.orange};
