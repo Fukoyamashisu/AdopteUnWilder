@@ -13,11 +13,12 @@ class ImageManipulator
 
     private $uploadPath;
 
-    public function __construct(SimpleImage $simpleImage, $uploadPath, $uploadPathCover)
+    public function __construct(SimpleImage $simpleImage, $uploadPath,$uploadPathCv, $uploadPathCover)
     {
         $this->simpleImage = $simpleImage;
         $this->uploadPath = $uploadPath;
         $this->uploadPathCover = $uploadPathCover;
+        $this->uploadPathCv = $uploadPathCv;
     }
 
     /**
@@ -42,4 +43,5 @@ class ImageManipulator
             ->toFile($this->uploadPathCover.$fileNamePicture);
         }
     }
+
 }

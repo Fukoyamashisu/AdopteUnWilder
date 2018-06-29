@@ -39,6 +39,7 @@ services:
     AppBundle\Service\ImageManipulator:
         $uploadPath: '%kernel.root_dir%/../web/assets/images/uploaded/profilPicture/'
         $uploadPathCover: '%kernel.root_dir%/../web/assets/images/uploaded/coverPicture/'
+        $uploadPathCv: '%kernel.root_dir%/../web/assets/images/uploaded/test/'
 
         # add more services, or override services that need manual wiring
         # AppBundle\Service\ExampleService:
@@ -50,3 +51,5 @@ services:
             $projectDirectory: '%project_directory%'
             $uploadPhotoDirectory: '%upload_photo_directory%'
             $webDirectory: '%web_directory%'
+            $uploadPathCv: '%upload_cv_directory'
+

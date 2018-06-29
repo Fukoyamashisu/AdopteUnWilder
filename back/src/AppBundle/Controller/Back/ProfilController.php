@@ -6,6 +6,7 @@ use AppBundle\Entity\Profil;
 use AppBundle\Service\ImageManipulator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class ProfilController extends Controller
@@ -31,6 +32,7 @@ class ProfilController extends Controller
 
         $currentProfilPicture = $user->getProfilPicture();
         $currentCoverPicture = $user->getCoverPicture();
+        $currentCvLink = $user->getCvLink();
 
         $editForm = $this->createForm('AppBundle\Form\ProfilType', $user);
         $editForm->handleRequest($request);
@@ -69,6 +71,21 @@ class ProfilController extends Controller
 
                 if($currentCoverPicture) {
                     unlink($currentCoverPicture);
+                }
+            }
+
+            if ($editForm['cvLink']->getdata() === null ) {
+                    $user->setCvLink($currentCvLink);
+            }
+
+            if ($editForm['cvLink']->getdata() ){
+
+                $cvLink = $user->getCvLink();
+                $fileNameCv = uniqid() . '.' . $cvLink->guessExtension();
+                $user->setCvLink('assets/images/uploaded/profilPicture/' . $fileNameCv);
+
+                if ($currentCvLink ) {
+                    unlink($currentCvLink);
                 }
             }
 

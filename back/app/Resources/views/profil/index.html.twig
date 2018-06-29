@@ -1,15 +1,15 @@
-{% block breadcrumb %}
+{% extends 'base.html.twig' %}
 
-{% endblock %}
-
-
-{% block content %}
+{% block body %}
     <div class="container apartment text-center marginTopHeader">
 
         <div class="textBigger mt-3">
             <div class="card border-info mb-3">
                 <div class="card-header">
                     <h4>Mon profil</h4>
+                </div>
+                <div class="card-body text-info">
+                    <img src="{{ user.profilPicture}}">
                 </div>
                 <div class="card-body text-info">
                     {{ user.firstName }}
@@ -22,9 +22,6 @@
                 </div>
                 <div class="card-body text-info">
                     {{ user.phoneNumber }}
-                </div>
-                <div class="card-body text-info">
-                    <img src="{{ user.profilPicture}}">
                 </div>
                 <div class="card-body text-info">
                     <img src="{{ user.coverPicture}}">
