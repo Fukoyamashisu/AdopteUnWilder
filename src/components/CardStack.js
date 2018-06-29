@@ -8,22 +8,21 @@ class CardStack extends Component {
             orderedSkills: []
         };
     }
-    componentDidMount() {
-        const {stacks} = this.props;
-        const orderedSkills = stacks.sort((a, b) => a.order - b.order)
-        return this.setState({orderedSkills})
-    }
+
     render() {
-        const {orderedSkills} = this.state;
+        const {stacks} = this.props;
+        console.log(stacks);
         return (
             <Row>
                 <StyledCardStack md="10">
                     <StyledH2>Stacks Techniques</StyledH2>
                     <StyledContainer>
                         <Row justify-content="center">
-                            {orderedSkills.map((elt, i) => <Col key={i} md="4">
-                                <StyledP>{elt.name}</StyledP>
-                            </Col>)}
+                            {stacks
+                                ? stacks.map((elt, i) => <Col key={i} md="4">
+                                    <StyledP>{elt.name}</StyledP>
+                                </Col>)
+                                : null}
                         </Row>
                     </StyledContainer>
                 </StyledCardStack>
