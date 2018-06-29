@@ -12,9 +12,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faBars, faSearch, faHome, faEnvelope, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
+import {
+    faBars,
+    faSearch,
+    faHome,
+    faEnvelope,
+    faInfoCircle,
+    faPhone
+} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faBars, faSearch, faHome, faEnvelope, faInfoCircle);
+library.add(faBars, faSearch, faHome, faEnvelope, faInfoCircle, faPhone);
 
 if (module.hot) 
     module.hot.accept();
