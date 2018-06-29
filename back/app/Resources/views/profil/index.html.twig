@@ -10,46 +10,73 @@
                 <div class="card-header">
                     <h4>Mon profil</h4>
                 </div>
-                <h1>Bonjour {{ app.user.profil.firstName | default}}</h1>
+                <h1>Bonjour {{ profil.firstName|capitalize}}</h1>
                 <div class="card-body text-info">
-                    <img src=" {{ user.profilPicture}}">
+                    <img src=" {{ profil.profilPicture}}">
                 </div>
-                <div class="row">
-                    <div class="card-body text-info">
-                         Prénom : {{ user.firstName}}
-                    </div>
-                    <div class="card-body text-info">
-                         Nom : {{ user.lastName}}
-                    </div>
-                    <div class="card-body text-info">
-                         Adresse : {{ user.adress}}
-                    </div>
-                    <div class="card-body text-info">
-                         Numéro Téléphone : {{ user.phoneNumber}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="card-body text-info">
-                         Promotion : {{ user.wildPromo}}
-                    </div>
-                    <div class="card-body text-info">
-                         Mobilitié : {{ user.workingArea}}
-                    </div>
-                    <div class="card-body text-info">
-                         Titre profil : {{ user.profilTitle}}
-                    </div>
-                    <div class="card-body text-info">
-                         Description : {{ user.profilDescription}}
-                    </div>
+                <div class="container mt-5">
+                    <h2 style="color: #006e90"> Mes informations</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                             Prénom : {{ profil.firstName}}
+                        </li>
+                        <li class="list-group-item">
+                             Nom : {{ profil.lastName}}
+                        </li>
+                        <li class="list-group-item">
+                             Adresse : {{ profil.adress}}
+                        </li>
+                        <li class="list-group-item">
+                             Numéro Téléphone : {{ profil.phoneNumber}}
+                        </li>
+                        <li class="list-group-item">
+                             Promotion : {{ profil.wildPromo}}
+                        </li>
+                        <li class="list-group-item">
+                             Mobilitié : {{ profil.workingArea}}
+                        </li>
+                        <li class="list-group-item">
+                             Titre profil : {{ profil.profilTitle}}
+                        </li>
+                        <li class="list-group-item">
+                             Description : {{ profil.profilDescription}}
+                        </li>
+                    </ul>
                 </div>
                 <div class="card-body text-info">
-                    <img src=" {{ user.coverPicture}}">
+                    <img src=" {{ profil.coverPicture}}">
                 </div>
 
+                <div class="container mt-5">
+                    <h2 style="color: #006e90"> Mes compétences</h2>
+                    {% for skill in profil.skills %}
+                        <ul class="list-group">
+                            <li class="list-group-item">{{ skill.skillName }}</li>
+                        </ul>
+                    {% endfor %}
+                </div>
+
+                <div class="container mt-5">
+                    <h2><a style="color: #006e90" href="{{ path('project_list') }}"> Mes Projets</a></h2>
+                    {% for project in profil.projects %}
+                        <ul class="list-group">
+                            <li class="list-group-item">{{ project.projectTitle }}</li>
+                        </ul>
+                    {% endfor %}
+                </div>
+
+                <div class="container mt-5">
+                    <h2 style="color: #006e90"> Mes expériences</h2>
+                    {% for experience in profil.experiences %}
+                        <ul class="list-group">
+                            <li class="list-group-item">{{ experience.experienceTitle }}</li>
+                        </ul>
+                    {% endfor %}
+                </div>
 
                 <div>
                     <a class="btn btn-success ml-auto m-2"
-                       href="{{ path('back.user.edit', { 'profil_id': user.id }) }}"><span class="fas
+                       href="{{ path('back.user.edit', { 'profil_id': profil.id }) }}"><span class="fas
 fa-plus-square mr-2"></span>Modifier votre profil</a>
                 </div>
                 <div>
