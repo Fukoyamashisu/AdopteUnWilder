@@ -5,6 +5,7 @@ import {
   StyledProfilSubTitle,
   StyledProfilTitle
 } from "../styled/StyledProfilCard";
+import photo from "../assets/img/photo.jpg";
 
 
 class ProfileCard extends Component {
@@ -19,6 +20,7 @@ class ProfileCard extends Component {
 
     return (
       <StyledProfilCard url="https://cdn.pixabay.com/photo/2016/10/09/18/03/smile-1726471_640.jpg">
+        <span />
         <StyledProfilTitle onClick={() => history.push(`/profile/${user.id}`, { user })}>{user.firstName} {user.lastName}</StyledProfilTitle>
         <StyledProfilSubTitle>{allSkills}</StyledProfilSubTitle>
       </StyledProfilCard>

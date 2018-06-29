@@ -5,11 +5,14 @@ export const StyledProfilCard = Styled.div`
     flex-direction:column;
     justify-content:flex-end;
     height:80vh;
-
-    background-size:cover;
-    background-position:center center;
+    /* background:url(${props => props.url}); */
+    
+    
     background: linear-gradient(rgba(255,0,0,0) 25%, ${props =>
-        props.theme.orange},url(${props => props.url}));
+      props.theme.orange}), url(${props => props.url});
+      background-size:cover, cover;
+    background-position:center center, center center;
+
     margin-right:1em;
     margin-left:1em;
 `;
