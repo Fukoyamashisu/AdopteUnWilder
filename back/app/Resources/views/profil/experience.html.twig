@@ -2,28 +2,29 @@
 
 {% block body %}
 
-    <section class="container-fluid">
+    <section class="container-fluid cent">
+        <div class="col cent">
 
 
-        <div class="row">
+        <div class="row cent">
 
-            <div class="col-6 offset-3 m-2">
-                <h1>Ajout d'une expérience</h1>
+            <div class="col-6 offset-3">
             </div>
 
-            <div class="col-6 offset-3 m-4">
+            <div class="col-6 offset-3">
+                <h1 class="black m-3 text-center">Ajout d'une expérience</h1>
                 {{ form_start(editForm) }}
                 {{ form_row(editForm.experienceTitle) }}
                 {{ form_row(editForm.experienceDescription) }}
-                {{ form_row(editForm.experienceDescription) }}
+                {{ form_row(editForm.experienceDate) }}
                 {{ form_row(editForm.isHidden) }}
+                <button type="submit" value="Valider" class="btn btn-primary m-3 text-center">Valider</button>
             </div>
-            <div class="col-6 offset-4 m-2">
-                <button type="submit" value="Valider" class="btn btn-primary">Valider</button>
+            <div class="col-6 offset-4">
             </div>
             {{ form_end(editForm) }}
         </div>
-
+        </div>
 
     </section>
 

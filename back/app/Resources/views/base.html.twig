@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %}AdopteUnWilder{% endblock %}</title>
+        <title>{% block title %}AdopteUnWilder - BackOffice{% endblock %}</title>
 
         {% block stylesheets %}{% endblock %}
         <!-- Bootstrap CSS -->
@@ -13,6 +13,10 @@
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" type="text/css">
 
     </head>
+
+    <header>
+        <img src="{{ asset('assets/images/logo_wild_portfolio.png') }}" alt="wild_logo" class="logo m-3">
+    </header>
     <body>
         {% for label, messages in app.flashes %}
             {% for message in messages %}
