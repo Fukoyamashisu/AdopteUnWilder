@@ -12,12 +12,14 @@ export const StyledProfilCard = Styled.div`
     background-position:center center;
     margin-right:1em;
     margin-left:1em;
-    & span{
+    & div{
         position:absolute;
+        display:flex;
+        justify-content:center;
         top:0;
         border-radius:0 0 5px 0;
-        width:50px;
-        height:50px;
+        padding:10px;
+        color:${props => props.theme.grey};
         background:${props => props.theme.orange};
     }
 `

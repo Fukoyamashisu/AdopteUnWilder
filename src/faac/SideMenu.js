@@ -57,6 +57,5 @@ export const SideMenu = ({ children, match }) => {
       </Col>
       <Col lg="1"> </Col>
     </Row>
-    // <StyledSideMenu>{children}</StyledSideMenu>
   );
 };
