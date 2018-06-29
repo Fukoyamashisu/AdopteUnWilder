@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    <div class="container bg-white" id="container-edit-project">
+        <div class="row text-center">
+            <div class="col-5 mt-5 mx-auto">
+                <h1 id="contact-titre" class="text-center pt-h1">Ajouter une photo</h1>
+            </div>
+            <div class="col-12 col-lg-6 offset-lg-3 col-md-4 offset-md-4" id="upload-files">
+                {{ form_start(upload_picture_form, {'attr': {'class': 'm-auto'}}) }}
+                <div class="form-group text-center">
+                    {{ form_widget(upload_picture_form.pathFile, {'attr': {'class': 'form-control-file text-center d-block mb-3'}}) }}
+                    {{ form_errors(upload_picture_form.pathFile) }}
+                </div>
+                <div>
+                    {{ form_row (upload_picture_form.pictureDescription) }}
+                </div>
+                <div>
+                    {{ form_row (upload_picture_form.isMain) }}
+                </div>
+                <button type="submit" class="btn btn-primary"/><i class="fas fa-pencil-alt mr-2"></i>Ajouter cette photo</button>
+                {{ form_end(upload_picture_form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

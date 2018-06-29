@@ -6,9 +6,9 @@ import {Link} from 'react-router-dom';
 export const NavBar = (props) => {
     
     return <StyledNav>
-                <Link to="/credit">Credit</Link>
-                <Link to="/createur">Createur</Link>
-                <Link to="/">Home</Link>
+                <Link to="/credit">PROPULSED BY</Link>
+                <Link to="/createur">CREATORS</Link>
+                <Link to="/">HOME</Link>
              </StyledNav>
 }
           

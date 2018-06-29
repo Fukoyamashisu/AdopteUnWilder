@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="container">
+        <div class="row">
+            <h1>Liste de tes experiences</h1>
+            {% for  experience in experiences %}
+                <div class="col-12">
+                    {{ experience.experienceTitle }}
+                    {{ experience.experienceDescription }}
+                    {{ experience.experienceDate }}
+                    {{ experience.isHidden }}
+                </div>
+                {{ form_start(delete[experience.id]) }}
+                <button type="submit" class="btn btn-danger text-white">
+                    Supprimer
+                </button>
+                {{ form_end(delete[experience.id]) }}
+            {% endfor %}
+
+            <div>
+                <a class="btn btn-success ml-auto m-2"
+                   href="{{  path('back.experiences') }}"><span class="fas fa-plus-square mr-2"></span>Ajouter une expérience à mon profil</a>
+            </div>
+            <div>
+                <a class="btn btn-success ml-auto m-2"
+                   href="{{  path('back.user.index') }}"><span class="fas fa-plus-square mr-2"></span>Retour à mon profil</a>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+{% endblock %}

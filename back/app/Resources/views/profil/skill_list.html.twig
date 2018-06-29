@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="container">
+            <div class="row">
+                <h1>Liste de tes compétences</h1>
+                {% for  skill in skills %}
+                    <div class="col-12">
+                        {{ skill.skillName }}
+                        {{ skill.skillsOrder }}
+                        {{ skill.skillLevel }}
+                    </div>
+                    {{ form_start(delete[skill.id]) }}
+                    <button type="submit" class="btn btn-danger text-white">
+                       Supprimer
+                    </button>
+                    {{ form_end(delete[skill.id]) }}
+                {% endfor %}
+
+                <div>
+                    <a class="btn btn-success ml-auto m-2"
+                       href="{{  path('back.skill') }}"><span class="fas fa-plus-square mr-2"></span>Ajouter une compétence à mon profil</a>
+                </div>
+                <div>
+                    <a class="btn btn-success ml-auto m-2"
+                       href="{{  path('back.user.index') }}"><span class="fas fa-plus-square mr-2"></span>Retour à mon profil</a>
+                </div>
+            </div>
+
+        </section>
+
+{% endblock %}

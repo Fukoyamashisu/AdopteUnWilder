@@ -60,9 +60,12 @@ class Project implements \JsonSerializable
      */
     private $pictures;
 
-    private function __construct()
+
+
+    public function __construct()
     {
         $this->pictures = new ArrayCollection();
+        $this->profil = new ArrayCollection();
     }
 
 
@@ -208,6 +211,16 @@ class Project implements \JsonSerializable
         return $this;
     }
 
+    public function getMainPicture()
+    {
+        foreach ($this->pictures as $picture) {
+            if ($picture->getIsMain()) {
+                $mainPicture = $picture;
+                return $mainPicture;
+            }
+        }
+    }
+
     /**
      * Specify data which should be serialized to JSON
      * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
@@ -224,5 +237,6 @@ class Project implements \JsonSerializable
             'order' => $this->projectOrder,
         ];
     }
+
 }
 

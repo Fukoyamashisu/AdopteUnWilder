@@ -51,6 +51,10 @@ class User implements UserInterface, \Serializable{
      */
     private $isActive;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Profil")
+     */
+    private $profil;
 
     /**
      * Get id
@@ -109,6 +113,24 @@ class User implements UserInterface, \Serializable{
     {
         return $this->password;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getProfil()
+    {
+        return $this->profil;
+    }
+
+    /**
+     * @param mixed $profil
+     */
+    public function setProfil($profil)
+    {
+        $this->profil = $profil;
+    }
+
+
 
     /**
      * Set token

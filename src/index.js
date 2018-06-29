@@ -1,15 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './assets/css/index.css';
-import App from './components/App';
-import theme from './styled/theme';
-import {ThemeProvider} from 'styled-components';
-import registerServiceWorker from './registerServiceWorker';
-import {BrowserRouter as Router} from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./assets/css/index.css";
+import App from "./components/App";
+import theme from "./styled/theme";
+import { ThemeProvider } from "styled-components";
+import registerServiceWorker from "./registerServiceWorker";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faBars, faSearch, faHome, faEnvelope, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
@@ -19,10 +16,14 @@ library.add(faBars, faSearch, faHome, faEnvelope, faInfoCircle);
 if (module.hot) 
     module.hot.accept();
 
+
 ReactDOM.render(
-    <Router>
+  <Router>
     <ThemeProvider theme={theme}>
-        <App/>
+      <App />
     </ThemeProvider>
-</Router>, document.getElementById('root'));
+  </Router>,
+  document.getElementById("root")
+);
+
 registerServiceWorker();

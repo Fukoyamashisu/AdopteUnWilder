@@ -26,8 +26,8 @@ class SkillType extends AbstractType
     {
         $builder
             ->add('skillName', TextType::class, ['label' => 'Nom de la compétence'])
-            ->add('skillsOrder', IntegerType::class, ['label' => 'Importance de la compétence (De 1 à X)'])
-            ->add('skillLevel', IntegerType::class, ['label' => 'Niveau de maîtrise de la compétence (en %)']);
+            ->add('skillsOrder', IntegerType::class, ['label' => 'Importance de la compétence (A partir de 1 pour la plus importante)'])
+            ->add('skillLevel', IntegerType::class, ['label' => 'Niveau de maîtrise de la compétence (entre 1 et 5)']);
     }
 
     /**

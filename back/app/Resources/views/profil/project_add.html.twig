@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container bg-white" id="container-edit-project">
+        <div class="row text-center">
+            <div class="col-5 mt-5 mx-auto">
+                {{ form_start(form) }}
+                {{ form_row (form.projectTitle) }}
+                {{ form_row (form.projectDescription) }}
+
+                <button type="submit" class="btn btn-primary"/><i class="fas fa-pencil-alt mr-2"></i>Mettre à jour</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

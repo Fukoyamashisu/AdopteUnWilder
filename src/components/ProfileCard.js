@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyledProfilCard } from '../styled/StyledProfilCard';
+import { StyledProfilCard, StyledProfilSubTitle, StyledProfilTitle } from '../styled/StyledProfilCard';
 
 //Styled-Components
 
@@ -11,8 +11,10 @@ class ProfileCard extends Component {
     }
     render() {
         return (
-            <StyledProfilCard>
-               <h1>hello</h1>
+            <StyledProfilCard url="https://majorblog.com/wp-content/uploads/2016/11/silhouette-of-man-looking-away.jpg">
+                <span></span>
+                <StyledProfilTitle>PETITOT</StyledProfilTitle>
+                <StyledProfilSubTitle>Sylvain</StyledProfilSubTitle>
             </StyledProfilCard>
         );
     }
