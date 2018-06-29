@@ -1,8 +1,7 @@
 <?php
-namespace AppBundle\ImageManipulator;
+namespace AppBundle\Service;
 
 
-use AppBundle\Entity\User;
 use claviska\SimpleImage;
 
 class ImageManipulator
@@ -14,15 +13,16 @@ class ImageManipulator
 
     private $uploadPath;
 
-    public function __construct(SimpleImage $simpleImage, $uploadPath)
+    public function __construct(SimpleImage $simpleImage, $uploadPath,$uploadPathCv, $uploadPathCover)
     {
         $this->simpleImage = $simpleImage;
         $this->uploadPath = $uploadPath;
+        $this->uploadPathCover = $uploadPathCover;
+        $this->uploadPathCv = $uploadPathCv;
     }
 
     /**
      * Upload and resize of profil picture
-     * @param User $user
      */
     public function handleUploadedProfilPicture($picture, $fileNamePicture)
     {
@@ -33,4 +33,15 @@ class ImageManipulator
             ->toFile($this->uploadPath.$fileNamePicture);
         }
     }
+
+    public function handleUploadedCoverPicture($picture, $fileNamePicture)
+    {
+        if (isset($picture)) {
+            $this->simpleImage
+            ->fromFile($picture->getRealPath())
+            ->bestFit(500,500)
+            ->toFile($this->uploadPathCover.$fileNamePicture);
+        }
+    }
+
 }

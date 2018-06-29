@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block breadcrumb %}
-
 {% endblock %}
 
 
@@ -28,6 +27,9 @@
                     <h4>Mon profil</h4>
                 </div>
                 <div class="card-body text-info">
+                    <img src="{{ user.profilPicture}}">
+                </div>
+                <div class="card-body text-info">
                     {{ user.firstName }}
                 </div>
                 <div class="card-body text-info">
@@ -40,7 +42,7 @@
                     {{ user.phoneNumber }}
                 </div>
                 <div class="card-body text-info">
-                    {{ user.profilPicture }}
+                    <img src="{{ user.coverPicture}}">
                 </div>
                 <div class="card-body text-info">
                     {{ user.wildPromo }}

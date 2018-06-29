@@ -11,11 +11,12 @@ class Uploader
     private $uploadPhotoDirectory;
     private $webDirectory;
 
-    public function __construct($projectDirectory, $uploadPhotoDirectory, $webDirectory, SimpleImage $simpleImage)
+    public function __construct($projectDirectory, $uploadPhotoDirectory, $webDirectory,$uploadPathCv, SimpleImage $simpleImage)
     {
         $this->projectDirectory = $projectDirectory;
         $this->uploadPhotoDirectory = $uploadPhotoDirectory;
         $this->webDirectory = $webDirectory;
+        $this->uploadPathCv = $uploadPathCv;
     }
     
     public function uploadPhoto(UploadedFile $uploadedPhoto)
@@ -31,6 +32,22 @@ class Uploader
             $this->uploadPhotoDirectory ,
             $fileName);
         
+        return $fileName;
+    }
+
+    public function uploadCv(UploadedFile $uploadedPhoto)
+    {
+        if ($uploadedPhoto->guessExtension()) {
+            $fileName = md5(uniqid()) . '.' . $uploadedPhoto->guessExtension();
+        } else {
+            $fileName = md5(uniqid()) . '.bin';
+        }
+        $uploadedPhoto->move(
+            $this->projectDirectory .
+            $this->webDirectory .
+            $this->uploadPathCv ,
+            $fileName);
+
         return $fileName;
     }
 }
