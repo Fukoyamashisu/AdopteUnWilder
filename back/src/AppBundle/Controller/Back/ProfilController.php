@@ -44,11 +44,10 @@ class ProfilController extends Controller
      */
     public function editAction(Request $request, ImageManipulator $imageManipulator, Profil $profil)
     {
-        $user = $this->getUser();
 
         $currentProfilPicture = $profil->getProfilPicture();
         $currentCoverPicture = $profil->getCoverPicture();
-        $currentCvLink = $profil->getCvLink();
+        //$currentCvLink = $profil->getCvLink();
 
         $editForm = $this->createForm('AppBundle\Form\ProfilType', $profil);
         $editForm->handleRequest($request);
@@ -63,13 +62,15 @@ class ProfilController extends Controller
 
             $pictureProfil = $profil->getProfilPicture();
 
-            $fileNamePicture = uniqid() . '.' . $pictureProfil->guessExtension();
 
-            $imageManipulator->handleUploadedProfilPicture($pictureProfil, $fileNamePicture);
+                $fileNamePicture = uniqid() . '.' . $pictureProfil->guessExtension();
+
+                $imageManipulator->handleUploadedProfilPicture($pictureProfil, $fileNamePicture);
 
                 $profil->setProfilPicture('assets/images/uploaded/profilPicture/' . $fileNamePicture);
 
-            if ($currentProfilPicture ) {
+
+                if ($currentProfilPicture ) {
                 unlink($currentProfilPicture);
                 }
             }
@@ -80,7 +81,7 @@ class ProfilController extends Controller
 
             if ($editForm['coverPicture']->getdata()) {
 
-            $pictureCover = $user->getCoverPicture();
+            $pictureCover = $profil->getCoverPicture();
             $fileNameCover = uniqid() . '.' . $pictureCover->guessExtension();
             $imageManipulator->handleUploadedCoverPicture($pictureCover, $fileNameCover);
                 $profil->setCoverPicture('assets/images/uploaded/coverPicture/' . $fileNameCover);
@@ -90,21 +91,20 @@ class ProfilController extends Controller
                 }
             }
 
-            if ($editForm['cvLink']->getdata() === null ) {
-                $profil->setCvLink($currentCvLink);
-            }
+            /* if ($editForm['cvLink']->getdata() === null ) {
+                 $profil->setCvLink($currentCvLink);
+             }
 
-            if ($editForm['cvLink']->getdata() ){
+             if ($editForm['cvLink']->getdata() ){
 
-                $cvLink = $user->getCvLink();
-                $fileNameCv = uniqid() . '.' . $cvLink->guessExtension();
-                $profil->setCvLink('assets/images/uploaded/profilPicture/' . $fileNameCv);
+                 $cvLink = $user->getCvLink();
+                 $fileNameCv = uniqid() . '.' . $cvLink->guessExtension();
+                 $profil->setCvLink('assets/images/uploaded/profilPicture/' . $fileNameCv);
 
-                if ($currentCvLink ) {
-                    unlink($currentCvLink);
-                }
-            }
-
+                 if ($currentCvLink ) {
+                     unlink($currentCvLink);
+                 }
+             }*/
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($profil);
