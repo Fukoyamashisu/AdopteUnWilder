@@ -12,30 +12,10 @@ import {Col, Row} from 'reactstrap'
 class CardProject extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            projects: [
-                {
-                    title: "Adopte Un Wilder",
-                    description: "Projet de portefolio skvhlhg hsjvhsf fhjsv vhsjfv dfhsqjvh sjkvjksvh shsj",
-                    link: "https://www.youtube.com/watch?v=UoBusD8-EwQ"
-                }, {
-                    title: "Adopte Un Wilder",
-                    description: "Projet de portefolio skvhlhg hsjvhsf fhjsv vhsjfv dfhsqjvh sjkvjksvh shsj",
-                    link: "https://www.youtube.com/watch?v=UoBusD8-EwQ"
-                }, {
-                    title: "Adopte Un Wilder",
-                    description: "Projet de portefolio skvhlhg hsjvhsf fhjsv vhsjfv dfhsqjvh sjkvjksvh shsj",
-                    link: "https://www.youtube.com/watch?v=UoBusD8-EwQ"
-                }, {
-                    title: "Adopte Un Wilder",
-                    description: "Projet de portefolio skvhlhg hsjvhsf fhjsv vhsjfv dfhsqjvh sjkvjksvh shsj",
-                    link: "https://www.youtube.com/watch?v=UoBusD8-EwQ"
-                }
-            ]
-        };
+        this.state = {};
     }
     render() {
-        const {projects} = this.state;
+        const {projects} = this.props;
         return (
             <Row>
                 {projects.map((elt, i) => <Col key={i} md="5">

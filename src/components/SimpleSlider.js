@@ -52,22 +52,22 @@ class SimpleSlider extends Component {
         return (
             <Slider {...settings}>
                 <div>
-                    <ProfileCard />
+                    <ProfileCard dispo={true}/>
                 </div>
                 <div>
-                    <ProfileCard />
+                    <ProfileCard dispo={false}/>
                 </div>
                 <div>
-                    <ProfileCard />
+                    <ProfileCard dispo={true}/>
                 </div>
                 <div>
-                    <ProfileCard />
+                    <ProfileCard dispo={true}/>
                 </div>
                 <div>
-                    <ProfileCard />
+                    <ProfileCard dispo={false}/>
                 </div>
                 <div>
-                    <ProfileCard />
+                    <ProfileCard dispo={false}/>
                 </div>
 
             </Slider>

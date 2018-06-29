@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { List, ListItem, Avatar, ListItemText } from "@material-ui/core";
-import { LocationOn, Phone, Today } from "@material-ui/icons";
+import React, {Component} from "react";
+import {List, ListItem, Avatar, ListItemText} from "@material-ui/core";
+import {LocationOn, Phone, Today} from "@material-ui/icons";
 
 class ContactInfo extends Component {
   constructor(props) {
@@ -8,28 +8,32 @@ class ContactInfo extends Component {
     this.state = {};
   }
   render() {
+    const {availability, phoneNumber, workingArea} = this.props;
     return (
       <List dense>
         <ListItem divider>
-          <Avatar style={{ backgroundColor: "#006e90" }}>
-            <LocationOn />
+          <Avatar style={{
+            backgroundColor: "#006e90"
+          }}>
+            <LocationOn/>
           </Avatar>
-          <ListItemText primary="Ville" secondary="Lyon" />
+          <ListItemText primary="Ville" secondary={workingArea}/>
         </ListItem>
         <ListItem divider>
-          <Avatar style={{ backgroundColor: "#006e90" }}>
-            <Phone />
+          <Avatar style={{
+            backgroundColor: "#006e90"
+          }}>
+            <Phone/>
           </Avatar>
-          <ListItemText primary="Téléphone" secondary="06 69 36 20 71" />
+          <ListItemText primary="Téléphone" secondary={phoneNumber}/>
         </ListItem>
         <ListItem divider>
-          <Avatar style={{ backgroundColor: "#006e90" }}>
-            <Today />
+          <Avatar style={{
+            backgroundColor: "#006e90"
+          }}>
+            <Today/>
           </Avatar>
-          <ListItemText
-            primary="Disponibilité"
-            secondary="1er septembre 2018"
-          />
+          <ListItemText primary="Disponibilité" secondary={availability}/>
         </ListItem>
       </List>
     );

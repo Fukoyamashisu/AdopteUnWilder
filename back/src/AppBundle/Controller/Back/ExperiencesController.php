@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Back;
 use AppBundle\Entity\Experience;
 use AppBundle\Entity\Profil;
 use AppBundle\Form\ExperiencesType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -15,11 +16,14 @@ class ExperiencesController extends Controller
 {
     /**
      * @Route("/user-experiences", name="back.experiences")
+     * @Method({"GET", "POST"})
      */
     public function editExperience(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $profil = $em->getRepository(Profil::class)->find(1);
+        $profil = $em->getRepository(Profil::class)->findOneBy([
+            'user' => $this->getUser(),
+        ]);
 
         $editForm = $this->createForm('AppBundle\Form\ExperiencesType');
         $editForm->handleRequest($request);
@@ -30,7 +34,7 @@ class ExperiencesController extends Controller
             $experience->setProfil($profil);
 
             $profil->addExperience($experience);
-
+//dump($profil);die;
             $em->flush();
 
             return $this->redirectToRoute('back.experiencesList');
@@ -43,13 +47,16 @@ class ExperiencesController extends Controller
 
     /**
      * @Route("/user-experiences-list", name="back.experiencesList")
+     * @Method({"GET", "POST"})
      */
     public function showExperiences()
     {
         $em = $this->getDoctrine()->getManager();
-        $profil = $em->getRepository(Profil::class)->find(1);
-        $experiences = $profil->getExperiences();
+        $profil = $em->getRepository(Profil::class)->findOneBy([
+            'user' => $this->getUser(),
+        ]);
 
+        $experiences = $profil->getExperiences();
 
         $delete = [];
 
@@ -61,6 +68,7 @@ class ExperiencesController extends Controller
         return $this->render('profil/experience_list.html.twig', [
             'experiences' => $experiences,
             'delete' => $delete,
+            'profil' => $profil,
         ]);
     }
 

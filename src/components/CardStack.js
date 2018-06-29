@@ -5,37 +5,29 @@ class CardStack extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            stack: [
-                "React",
-                "JavaScript",
-                "Angular",
-                "Vue",
-                "Pug",
-                "PHP",
-                "$?$?$?",
-                "MVC",
-                "Symfo",
-                "Fortran",
-                "Haskell",
-                "Lodash",
-                "Passport",
-                "BCrypt"
-            ]
+            orderedSkills: []
         };
     }
+    componentDidMount() {
+        const {stacks} = this.props;
+        const orderedSkills = stacks.sort((a, b) => a.order - b.order)
+        return this.setState({orderedSkills})
+    }
     render() {
-        const {stack} = this.state;
+        const {orderedSkills} = this.state;
         return (
-            <StyledCardStack>
-                <StyledH2>Stacks Techniques</StyledH2>
-                <StyledContainer>
-                    <Row justify-content="center">
-                        {stack.map((elt, i) => <Col md="4" key={i}>
-                            <StyledP>{elt}</StyledP>
-                        </Col>)}
-                    </Row>
-                </StyledContainer>
-            </StyledCardStack>
+            <Row>
+                <StyledCardStack md="10">
+                    <StyledH2>Stacks Techniques</StyledH2>
+                    <StyledContainer>
+                        <Row justify-content="center">
+                            {orderedSkills.map((elt, i) => <Col key={i} md="4">
+                                <StyledP>{elt.name}</StyledP>
+                            </Col>)}
+                        </Row>
+                    </StyledContainer>
+                </StyledCardStack>
+            </Row>
         );
     }
 }
