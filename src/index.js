@@ -9,10 +9,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faLock,faLockOpen,faChevronRight, faChevronLeft,faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faLockOpen, faChevronRight, faChevronLeft, faBars, faSearch, faEnvelope, faInfoCircle, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 
-library.add(faChevronRight, faChevronLeft, faBars, faSearch, faLock, faLockOpen);
+library.add(faChevronRight, faChevronLeft, faBars, faSearch, faLock, faLockOpen, faEnvelope, faInfoCircle, faPhone);
 
 if (module.hot) 
     module.hot.accept();
