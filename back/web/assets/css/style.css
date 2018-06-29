@@ -20,3 +20,35 @@
 .w-40 {
     width: 40%;
 }
+
+.orange {
+    color: #fa7a0f;
+}
+
+.wildColor {
+    color: #ffad42;
+}
+
+.red {
+    color:#b64426;
+}
+
+.blue {
+    color: #5eb1bf;
+}
+
+.lightBlue {
+    color: #dce9ef;
+}
+
+.darkBlue {
+    color: #006e90;
+}
+
+.black {
+    color: #252526;
+}
+
+.grey {
+    color: #fcfcfc;
+}
