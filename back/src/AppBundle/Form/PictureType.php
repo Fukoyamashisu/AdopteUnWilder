@@ -21,19 +21,14 @@ class PictureType extends AbstractType
             ->add('pathFile', FileType::class, ['label' => '', 'required' => false])
             ->add('pictureDescription', TextareaType::class, [
                 'label' => 'Description de la photo',
-                'required' => false]);
-
-            if(!$options['is_main']) {
-                $builder
-                    ->add('isMain', ChoiceType::class, [
-                        'choices' => [
-                            'Oui' => 1,
-                            'Non' => 0],
-                        'expanded' => true,
-                        'multiple' => false,
-                        'label' => 'Photo principale:']);
-            }
-
+                'required' => false])
+            ->add('isMain', ChoiceType::class, [
+                'choices' => [
+                    'Oui' => 1,
+                    'Non' => 0],
+                'expanded' => true,
+                'multiple' => false,
+                'label' => 'Photo principale:']);
     }
 
 
@@ -44,7 +39,6 @@ class PictureType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Picture::class,
-
             'is_main'=> false,
         ]);
     }

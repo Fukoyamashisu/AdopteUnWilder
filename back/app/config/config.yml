@@ -16,7 +16,6 @@ parameters:
     domain: adopteflavien.com
     domaina: adopteflavien.com
 
-
 framework:
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }
