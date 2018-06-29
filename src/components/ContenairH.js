@@ -27,7 +27,12 @@ class ContenairH extends Component {
             <SideMenu />
           </Col>
           <Col>
-            <StyledRow style={{ backgroundImage: `url(${cover})` }}>
+            <StyledRow
+              style={{
+                backgroundImage: `url(${cover})`,
+                backgroundSize: "cover"
+              }}
+            >
               <Col>
                 <Row>
                   <Col md={{ size: "6", offset: 2 }}>

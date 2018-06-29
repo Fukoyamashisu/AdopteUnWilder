@@ -1,23 +1,26 @@
-import React, { Component } from 'react';
-import { StyledProfilCard, StyledProfilSubTitle, StyledProfilTitle } from '../styled/StyledProfilCard';
+import React, { Component } from "react";
+import {
+  StyledProfilCard,
+  StyledProfilSubTitle,
+  StyledProfilTitle
+} from "../styled/StyledProfilCard";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//Styled-Components
 
 class ProfileCard extends Component {
-    
-    render() {
-
-        const {dispo} = this.props;
-        return (
-            <StyledProfilCard url="https://majorblog.com/wp-content/uploads/2016/11/silhouette-of-man-looking-away.jpg">
-                <div>
-                    {dispo ? <FontAwesomeIcon icon="lock-open" size="2x" /> : <FontAwesomeIcon icon="lock" size="2x" />}
-                </div>
-                <StyledProfilTitle>PETITOT</StyledProfilTitle>
-                <StyledProfilSubTitle>Sylvain</StyledProfilSubTitle>
-            </StyledProfilCard>
-        );
-    }
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <StyledProfilCard url="https://majorblog.com/wp-content/uploads/2016/11/silhouette-of-man-looking-away.jpg">
+        <span />
+        <StyledProfilTitle>JULIEN FOUCHER</StyledProfilTitle>
+        <StyledProfilSubTitle>Javascript, React, Node.js</StyledProfilSubTitle>
+      </StyledProfilCard>
+    );
+  }
 }
 
 export default ProfileCard;

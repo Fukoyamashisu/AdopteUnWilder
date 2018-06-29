@@ -48,9 +48,15 @@ class ProjectController extends Controller
             }
         }
 
+        $deleteProjectForms = [];
+        foreach ($projects as $project) {
+            $deleteProjectForms[$project->getId()] = $this->createDeleteProjectForm($project)->createView();
+        }
+
         return $this->render('profil/project_list.html.twig', [
             'projects' => $projects,
             'deleteForms' => $deleteForms,
+            'deleteProjectForms'=> $deleteProjectForms,
         ]);
     }
 
@@ -62,7 +68,10 @@ class ProjectController extends Controller
     public function projectAdd(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $profil = $em->getRepository(Profil::class)->find(1);
+
+        $profil = $em->getRepository(Profil::class)->findOneBy([
+            'user' => $this->getUser(),
+        ]);
 
         $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
@@ -107,6 +116,50 @@ class ProjectController extends Controller
             'project' => $project,
             'edit_form' => $editForm->createView(),
         ]);
+    }
+
+    /**
+     * Display admin space delete image
+     *
+     * @Route("/{id}/delete", name="project_delete", requirements={"id"="\d+"})
+     * @Method("DELETE")
+     */
+    public function projectDelete(Request $request, Project $project)
+    {
+        $form = $this->createDeleteProjectForm($project);
+        $form->handleRequest($request);
+
+        if ($project->getPictures()) {
+            $this->addFlash('warning' , 'Toutes les photos doivent etre supprimées avant de pouvoir supprimer le projet');
+            return $this->redirectToRoute('project_list');
+        }
+
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($project);
+            $em->flush();
+
+            $this->addFlash('success' , 'Projet supprimé !');
+        }
+        return $this->redirectToRoute('project_list');
+    }
+
+    /**
+     * Creates a form to delete a project
+     *
+     * @param Project $project
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteProjectForm(Project $project)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('project_delete', ['id' => $project->getId()]))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
     }
 
     /**

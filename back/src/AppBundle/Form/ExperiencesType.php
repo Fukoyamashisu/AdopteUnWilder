@@ -11,6 +11,8 @@ namespace AppBundle\Form;
 
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -29,7 +31,11 @@ class ExperiencesType extends AbstractType
             ->add('experienceTitle', TextType::class, ['label' => 'Titre de votre expérience'])
             ->add('experienceDescription', TextareaType::class, ['label' => 'Description de votre expérience'])
             ->add('experienceDate', TextType::class, ['label' => 'Date de votre expérience'])
-            ->add('isHidden', IntegerType::class, ['label' => 'Voulez vous afficher cette expérience ?']);
+            ->add('isHidden', CheckboxType::class, [
+                'label' => 'Voulez vous masquer cette expérience ?',
+                'data' => false,
+                'required' => false,
+            ]);
     }
 
     /**

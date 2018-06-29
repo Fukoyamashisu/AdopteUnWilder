@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="picture")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PictureRepository")
  */
-class Picture
+class Picture implements \JsonSerializable
 {
     /**
      * @var int
@@ -26,7 +26,7 @@ class Picture
      *
      * @ORM\Column(name="pictureUrl", type="string", length=255, nullable=true)
      */
-    private $pictureUrl;
+    public $pictureUrl;
 
     /**
      * @var string
@@ -203,5 +203,21 @@ class Picture
         return $this;
     }
 
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'pictureUrl' => $this->pictureUrl,
+            'pictureTitle' => $this->pictureTitle,
+            'pictureDescription' => $this->pictureDescription,
+            'isMain' => $this->isMain,
+        ];
+    }
 }
 
