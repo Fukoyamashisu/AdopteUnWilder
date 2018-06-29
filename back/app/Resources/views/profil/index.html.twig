@@ -11,33 +11,38 @@
                 <div class="card-body text-info">
                     <img src="{{ user.profilPicture}}">
                 </div>
-                <div class="card-body text-info">
-                    {{ user.firstName }}
+                <div class="row">
+                    <div class="card-body text-info">
+                        Prénom : {{ user.firstName }}
+                    </div>
+                    <div class="card-body text-info">
+                        Nom : {{ user.lastName }}
+                    </div>
+                    <div class="card-body text-info">
+                        Adresse : {{ user.adress }}
+                    </div>
+                    <div class="card-body text-info">
+                        Numéro de téléphone : {{ user.phoneNumber }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card-body text-info">
+                        Promo Wilds : {{ user.wildPromo }}
+                    </div>
+                    <div class="card-body text-info">
+                        Titre de votre profil : {{ user.profilTitle }}
+                    </div>
+                    <div class="card-body text-info">
+                        Votre description : {{ user.profilDescription }}
+                    </div>
+                    <div class="card-body text-info">
+                        Votre CV : {{ user.cvLink }}
+                    </div>
                 </div>
                 <div class="card-body text-info">
-                    {{ user.lastName }}
+                    Photo de couverture : <br><img src="{{ user.coverPicture}}">
                 </div>
-                <div class="card-body text-info">
-                    {{ user.adress }}
-                </div>
-                <div class="card-body text-info">
-                    {{ user.phoneNumber }}
-                </div>
-                <div class="card-body text-info">
-                    <img src="{{ user.coverPicture}}">
-                </div>
-                <div class="card-body text-info">
-                    {{ user.wildPromo }}
-                </div>
-                <div class="card-body text-info">
-                    {{ user.profilTitle }}
-                </div>
-                <div class="card-body text-info">
-                    {{ user.profilDescription }}
-                </div>
-                <div class="card-body text-info">
-                    {{ user.cvLink }}
-                </div>
+
             </div>
         </div>
     </div>
