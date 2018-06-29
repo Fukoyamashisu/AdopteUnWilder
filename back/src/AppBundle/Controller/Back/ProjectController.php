@@ -22,7 +22,7 @@ use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Class ProjectController
- * @Route("back/project")
+ * @Route("user-project")
  */
 class ProjectController extends Controller
 {

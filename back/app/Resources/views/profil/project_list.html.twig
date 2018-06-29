@@ -10,7 +10,10 @@
         <a class="btn btn-primary ml-auto m-2"
            href="{{  path('project_add') }}"><span class="fas fa-plus-square mr-2"></span>Ajouter un projet à votre portfolio</a>
     </div>
-
+    <div>
+        <a class="btn btn-success ml-auto m-2"
+           href="{{  path('back.user.index') }}"><span class="fas fa-plus-square mr-2"></span>Retour à mon profil</a>
+    </div>
     {% for project in projects %}
     <table class="table bg-grey table-sm table-responsive-lg mx-2 text-center">
         <thead>

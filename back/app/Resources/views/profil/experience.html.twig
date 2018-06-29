@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="container-fluid">
+
+
+        <div class="row">
+
+            <div class="col-6 offset-3 m-2">
+                <h1>Ajout d'une expérience</h1>
+            </div>
+
+            <div class="col-6 offset-3 m-4">
+                {{ form_start(editForm) }}
+                {{ form_row(editForm.experienceTitle) }}
+                {{ form_row(editForm.experienceDescription) }}
+                {{ form_row(editForm.experienceDescription) }}
+                {{ form_row(editForm.isHidden) }}
+            </div>
+            <div class="col-6 offset-4 m-2">
+                <button type="submit" value="Valider" class="btn btn-primary">Valider</button>
+            </div>
+            {{ form_end(editForm) }}
+        </div>
+
+
+    </section>
+
+
+
+{% endblock %}
