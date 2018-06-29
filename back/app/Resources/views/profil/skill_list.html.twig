@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="container-fluid">
+
+
+            <div class="row">
+                {% for  skill in skills %}
+                    <div class="col-12">
+                        {{ skill.skillName }}
+                        {{ skill.skillsOrder }}
+                        {{ skill.skillLevel }}
+                    </div>
+                    {{ form_start(delete[skill.id]) }}
+                    <button type="submit" class="btn btn-danger text-white">
+                       Supprimer
+                    </button>
+                    {{ form_end(delete[skill.id]) }}
+                {% endfor %}
+            </div>
+
+        </section>
+
+{% endblock %}

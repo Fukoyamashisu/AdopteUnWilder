@@ -6,3 +6,6 @@ back:
     resource: "@AppBundle/Controller/Back"
     type: annotation
 
+logout:
+    path: /logout
+

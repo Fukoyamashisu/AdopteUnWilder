@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="container-fluid">
+
+
+        <div class="row">
+            {% for  experience in experiences %}
+                <div class="col-12">
+                    {{ experience.experienceTitle }}
+                    {{ experience.experienceDescription }}
+                    {{ experience.experienceDate }}
+                    {{ experience.isHidden }}
+                </div>
+                {{ form_start(delete[experience.id]) }}
+                <button type="submit" class="btn btn-danger text-white">
+                    Supprimer
+                </button>
+                {{ form_end(delete[experience.id]) }}
+            {% endfor %}
+        </div>
+
+
+    </section>
+
+
+
+{% endblock %}
