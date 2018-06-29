@@ -19,7 +19,7 @@ class ExperiencesController extends Controller
     public function editExperience(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $profil = $em->getRepository(Profil::class)->find(1);
+        $profil = $em->getRepository(Profil::class)->find($this->getUser());
 
         $editForm = $this->createForm('AppBundle\Form\ExperiencesType');
         $editForm->handleRequest($request);
@@ -47,7 +47,7 @@ class ExperiencesController extends Controller
     public function showExperiences()
     {
         $em = $this->getDoctrine()->getManager();
-        $profil = $em->getRepository(Profil::class)->find(1);
+        $profil = $em->getRepository(Profil::class)->find($this->getUser());
         $experiences = $profil->getExperiences();
 
 

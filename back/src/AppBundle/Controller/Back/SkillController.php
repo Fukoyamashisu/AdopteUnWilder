@@ -18,7 +18,7 @@ class SkillController extends Controller
     public function editSkill(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $profil = $em->getRepository(Profil::class)->find(1);
+        $profil = $em->getRepository(Profil::class)->find($this->getUser());
 
         $editForm = $this->createForm('AppBundle\Form\SkillType');
         $editForm->handleRequest($request);
@@ -47,7 +47,7 @@ class SkillController extends Controller
     public function showSkills()
     {
         $em = $this->getDoctrine()->getManager();
-        $profil = $em->getRepository(Profil::class)->find(1);
+        $profil = $em->getRepository(Profil::class)->find($this->getUser());
         $skills = $profil->getSkills();
 
 
