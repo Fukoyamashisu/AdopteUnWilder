@@ -60,9 +60,12 @@ class Project implements \JsonSerializable
      */
     private $pictures;
 
-    private function __construct()
+
+
+    public function __construct()
     {
         $this->pictures = new ArrayCollection();
+        $this->profil = new ArrayCollection();
     }
 
 
@@ -234,5 +237,6 @@ class Project implements \JsonSerializable
             'order' => $this->projectOrder,
         ];
     }
+
 }
 

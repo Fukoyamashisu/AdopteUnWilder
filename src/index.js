@@ -6,9 +6,7 @@ import theme from "./styled/theme";
 import { ThemeProvider } from "styled-components";
 import registerServiceWorker from "./registerServiceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
-
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faLock,faLockOpen,faChevronRight, faChevronLeft,faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -20,10 +18,12 @@ if (module.hot)
     module.hot.accept();
 
 ReactDOM.render(
-    <Router>
+  <Router>
     <ThemeProvider theme={theme}>
-        <App/>
+      <App />
     </ThemeProvider>
-</Router>, document.getElementById('root'));
+  </Router>,
+  document.getElementById("root")
+);
 
 registerServiceWorker();

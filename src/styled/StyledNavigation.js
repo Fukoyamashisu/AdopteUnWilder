@@ -1,6 +1,4 @@
-import Styled from 'styled-components';
-
-
+import Styled from "styled-components";
 
 export const StyledNav = Styled.div`
     position:sticky;
@@ -28,4 +26,4 @@ export const StyledNav = Styled.div`
             border-left:4px solid ${props => props.theme.blue};
         }
     }
-`
+`;

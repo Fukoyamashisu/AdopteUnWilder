@@ -9,11 +9,7 @@ import Routes from "../routes.js";
 
 class App extends Component {
   render() {
-    return (
-
-    <Routes {...this.props}/>
-
-    );
+    return <Routes {...this.props} />;
   }
 }
 

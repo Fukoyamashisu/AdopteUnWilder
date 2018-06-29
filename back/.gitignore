@@ -14,12 +14,11 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/web/bundles/
-<<<<<<< HEAD
 /web/assets/images/*
 !/web/assets/images/.gitkeep
-!/web/assets/images/uploaded/profilPicture.gitkeep
-
-
 .idea
+
+
+
+
 
