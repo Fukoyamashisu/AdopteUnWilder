@@ -1,5 +1,5 @@
-
 import React, { Component } from 'react';
+import withData from '../hoc/withData';
 
 import Routes from '../routes.js';
 
@@ -14,4 +14,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withData(App);
