@@ -30,7 +30,8 @@ class ProfilController extends Controller
             return $this->render('profil/index.html.twig', [
                 'user' => $profil,
             ]);
-        } else {
+        }
+        else {
 
             return $this->redirectToRoute('back.user.new');
         }

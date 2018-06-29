@@ -234,6 +234,7 @@ class Project implements \JsonSerializable
             'title' => $this->projectTitle,
             'description' => $this->projectDescription,
             'url' => $this->projectUrl,
+            'pictures' => $this->pictures->toArray(),
             'order' => $this->projectOrder,
         ];
     }
