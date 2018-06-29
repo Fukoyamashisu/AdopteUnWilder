@@ -10,6 +10,15 @@ margin-Top: 1rem;
 text-transform: uppercase;
 `;
 
+export const MainProfileTitle = Styled.h1`
+font-family: "Lato";
+font-size: 3rem;
+font-weight:900;
+color: ${props => props.theme.black};
+margin-Top: 2rem;
+text-transform: uppercase;
+`;
+
 export const MainHomeDescription = Styled.p`
 font-family: "Cardo";
 font-size: 1.1rem;
@@ -19,7 +28,7 @@ font-style: italic;
 
 export const Divider = Styled.div`
 margin:30px 0px;
-width: 50%;
+width: 30%;
 height:10px;
 border-bottom: 6px solid ${props => props.theme.red};
 `;

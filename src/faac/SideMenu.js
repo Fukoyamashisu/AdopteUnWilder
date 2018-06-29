@@ -4,12 +4,29 @@ import { Row, Col } from "reactstrap";
 import {
   MainHomeTitle,
   MainHomeDescription,
-  Divider,
-  NavItem
+  Divider
 } from "../styled/LeftMenu";
 import mainLogo from "../assets/img/logo_wild_portfolio.png";
+import SelectLeftPane from "../components/SelectLeftPane";
 
 export const SideMenu = ({ children, match }) => {
+  const contentSkills = {
+    title: "Compétences",
+    items: [
+      {
+        value: "",
+        text: "Toutes"
+      },
+      {
+        value: "0",
+        text: "Javascript"
+      },
+      {
+        value: "1",
+        text: "PHP"
+      }
+    ]
+  };
   return (
     <Row>
       <Col lg="1"> </Col>
@@ -18,7 +35,7 @@ export const SideMenu = ({ children, match }) => {
           <img
             src={mainLogo}
             alt="Logo"
-            width="80%"
+            width="70%"
             style={{ marginTop: "3em" }}
           />
         </div>
@@ -32,9 +49,11 @@ export const SideMenu = ({ children, match }) => {
           Découvrez les profils des Wilders de la promotion du printemps 2018.
         </MainHomeDescription>
         <Divider />
-        <p>Filtre 1</p>
-        <p>Filtre 2</p>
-        <p>Filtre 3</p>
+        <form autoComplete="off">
+          <SelectLeftPane content={contentSkills} />
+          <SelectLeftPane content={contentSkills} />
+          <SelectLeftPane content={contentSkills} />
+        </form>
       </Col>
       <Col lg="1"> </Col>
     </Row>
