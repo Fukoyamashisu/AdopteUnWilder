@@ -49,26 +49,16 @@ class SimpleSlider extends Component {
 
 
     render() {
+
+        const {profils} = this.props;
+        const allProfils = profils.map((el, i) => <div key={el+i}>
+            <ProfileCard user={el} {...this.props}/>
+        </div> )
+
         return (
             <Slider {...settings}>
-                <div>
-                    <ProfileCard dispo={true}/>
-                </div>
-                <div>
-                    <ProfileCard dispo={false}/>
-                </div>
-                <div>
-                    <ProfileCard dispo={true}/>
-                </div>
-                <div>
-                    <ProfileCard dispo={true}/>
-                </div>
-                <div>
-                    <ProfileCard dispo={false}/>
-                </div>
-                <div>
-                    <ProfileCard dispo={false}/>
-                </div>
+                
+                {allProfils}
 
             </Slider>
         );
