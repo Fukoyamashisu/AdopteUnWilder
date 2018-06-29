@@ -47,7 +47,9 @@ class PictureController extends Controller
                     // Check if the file is already uploaded
                     $alreadyUploaded = $this->getDoctrine()->getManager()->getRepository(Picture::class)->findBy([
                         'pictureTitle' => $pictureTitle,
+                        'project' => $project,
                     ]);
+
                     if ($alreadyUploaded) {
                         $this->addFlash('error', 'La picture ' . $pictureTitle . ' apparait déjà dans le projet');
                     } else {

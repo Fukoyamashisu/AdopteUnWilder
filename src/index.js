@@ -5,10 +5,12 @@ import App from "./components/App";
 import theme from "./styled/theme";
 import {ThemeProvider} from "styled-components";
 import registerServiceWorker from "./registerServiceWorker";
-import {BrowserRouter as Router} from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {library} from '@fortawesome/fontawesome-svg-core'
+import { BrowserRouter as Router } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+
 import {
   faBars,
   faSearch,
@@ -16,12 +18,12 @@ import {
   faEnvelope,
   faInfoCircle,
   faPhone
-} from '@fortawesome/free-solid-svg-icons'
+
+} from "@fortawesome/free-solid-svg-icons";
 
 library.add(faBars, faSearch, faHome, faEnvelope, faInfoCircle, faPhone);
 
-if (module.hot) 
-  module.hot.accept();
+if (module.hot) module.hot.accept();
 
 ReactDOM.render(
   <Router>
