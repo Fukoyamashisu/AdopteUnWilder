@@ -17,7 +17,7 @@ class ProfilController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getRepository(Profil::class);
-        $user = $em->find( 1);
+        $user = $em->find( $this->getUser());
 
         return $this->render('profil/index.html.twig', ['user' => $user]);
     }

@@ -62,7 +62,7 @@ class ProjectController extends Controller
     public function projectAdd(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $profil = $em->getRepository(Profil::class)->find(1);
+        $profil = $em->getRepository(Profil::class)->find($this->getUser());
 
         $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
