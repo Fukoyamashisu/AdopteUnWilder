@@ -16,7 +16,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $profils = $this->getDoctrine()->getManager()->getRepository(Profil::class)->findAll();
-        //dump($profils); die;
+        //dump(API OK); die;
 
         $response = new Response(json_encode(array('profils' => $profils)));
         $response->headers->set('Content-Type', 'application/json');
