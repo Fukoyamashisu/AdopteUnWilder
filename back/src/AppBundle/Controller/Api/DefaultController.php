@@ -11,11 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="api.home", host="api.adopteMartin.com")
+     * @Route("/", name="api.home", host="api.adopteflavien.com")
      */
     public function indexAction()
     {
         $profils = $this->getDoctrine()->getManager()->getRepository(Profil::class)->findAll();
+        //dump($profils); die;
 
         $response = new Response(json_encode(array('profils' => $profils)));
         $response->headers->set('Content-Type', 'application/json');
