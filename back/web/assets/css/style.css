@@ -52,3 +52,7 @@
 .grey {
     color: #fcfcfc;
 }
+
+.logo{
+    position: absolute;
+}
