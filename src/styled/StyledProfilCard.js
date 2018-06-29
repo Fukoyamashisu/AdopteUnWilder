@@ -18,6 +18,7 @@ export const StyledProfilCard = Styled.div`
 `;
 
 export const StyledProfilTitle = Styled.h2`
+    cursor: zoom-in;
     color:${props => props.theme.grey};
     margin-bottom:5px;
     margin-left:20px;
