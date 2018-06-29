@@ -7,10 +7,11 @@ export const StyledProfilCard = Styled.div`
     height:80vh;
     /* background:url(${props => props.url}); */
     
-    background-size:cover;
-    background-position:center center;
+    
     background: linear-gradient(rgba(255,0,0,0) 25%, ${props =>
-  props.theme.orange});
+      props.theme.orange}), url(${props => props.url});
+      background-size:cover, cover;
+    background-position:center center, center center;
     margin-right:1em;
     margin-left:1em;
     & div{

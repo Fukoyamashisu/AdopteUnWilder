@@ -4,6 +4,7 @@ import {
   StyledProfilSubTitle,
   StyledProfilTitle
 } from "../styled/StyledProfilCard";
+import photo from "../assets/img/photo.jpg";
 
 //Styled-Components
 
@@ -14,7 +15,7 @@ class ProfileCard extends Component {
   }
   render() {
     return (
-      <StyledProfilCard url="https://majorblog.com/wp-content/uploads/2016/11/silhouette-of-man-looking-away.jpg">
+      <StyledProfilCard url={photo}>
         <span />
         <StyledProfilTitle>JULIEN FOUCHER</StyledProfilTitle>
         <StyledProfilSubTitle>Javascript, React, Node.js</StyledProfilSubTitle>

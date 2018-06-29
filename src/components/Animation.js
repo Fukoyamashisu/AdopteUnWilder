@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Typist from "react-typist";
-import "/home/wilder/Documents/Hackaton_Portfolio/AdopteUnWilder/src/assets/css/index.css";
+import "../assets/css/index.css";
 import { StyledDivAnimation } from "../styled/StyledAnimation";
 
 class Animation extends Component {
