@@ -13,7 +13,7 @@ const Routes = rest => {
         render={props => <ContenairH {...props} {...rest} />}
       />
       <Route
-        path="/profile"
+        path="/profile/:id"
         render={props => <ContenairV {...props} {...rest} />}
       />
       <Route path="/anim" component={Animation} />

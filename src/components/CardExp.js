@@ -20,19 +20,21 @@ class CardExp extends Component {
             <Row>
                 <StyledCardExp md="10">
                     <StyledH2>Expériences</StyledH2>
-                    {experiences.map((elt, i) => <StyledDiv>
-                        <StyledRow>
-                            <Col md="9">
-                                <StyledH4>{elt.title}</StyledH4>
-                            </Col>
-                            <Col md="3">
-                                <p>{elt.date}</p>
-                            </Col>
-                        </StyledRow>
-                        <Row>
-                            <StyledP>{elt.description}</StyledP>
-                        </Row>
-                    </StyledDiv>)}
+                    {experiences
+                        ? experiences.map((elt, i) => <StyledDiv>
+                            <StyledRow>
+                                <Col md="9">
+                                    <StyledH4>{elt.title}</StyledH4>
+                                </Col>
+                                <Col md="3">
+                                    <p>{elt.date}</p>
+                                </Col>
+                            </StyledRow>
+                            <Row>
+                                <StyledP>{elt.description}</StyledP>
+                            </Row>
+                        </StyledDiv>)
+                        : null}
                 </StyledCardExp>
             </Row>
         );

@@ -42,7 +42,7 @@ class ContenairH extends Component {
                 <StyledRow align>
                   <Col>
                     <StyledRow slick>
-                      <SimpleSlider />
+                      <SimpleSlider {...this.props}/>
                     </StyledRow>
                   </Col>
                 </StyledRow>

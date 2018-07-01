@@ -14,6 +14,7 @@ const withData = WrapComponent =>
         }
 
         componentDidMount(){
+            this.getData();
             setInterval(() => {
                 this.getData();
             }, 6*1000*20);
@@ -25,7 +26,6 @@ const withData = WrapComponent =>
                 if(res.data){
                     this.setState({data:res.data});
                 }
-                !res.data ? this.setState({data}) : console.log(res);
             }).catch(error => {
                 console.log(error);
                 this.setState({ data });
